@@ -1,5 +1,9 @@
 package com.example;
 
+import com.example.model.Account;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,6 +38,8 @@ public class App extends WebSecurityConfigurerAdapter{
 
     @Autowired
     OAuth2ClientContext oauth2ClientContext;
+
+    static Account account;
 
     @RequestMapping("/user")
     public Principal user(Principal principal) {
@@ -106,7 +112,7 @@ public class App extends WebSecurityConfigurerAdapter{
         http
                 .antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/", "/login**", "/webjars/**", "/css/**", "/js/**", "/img/**")
+                .antMatchers("/","/parser**","/gallery**", "/mylibrary**", "/sign**","/login**", "/webjars/**", "/css/**", "/js/**", "/img/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -118,5 +124,33 @@ public class App extends WebSecurityConfigurerAdapter{
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
+
+        SessionFactory sessionFactory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+
+        Session session = null;
+
+        try {
+
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+
+            session.save(new Account(3,"3fdsa","dwdw" ));
+
+            System.out.println("\n.......Records Saved Successfully To The Database.......\n");
+
+            // Committing The Transactions To The Database
+            session.getTransaction().commit();
+        } catch(Exception sqlException) {
+            if(null != session.getTransaction()) {
+                System.out.println("\n.......Transaction Is Being Rolled Back.......");
+                session.getTransaction().rollback();
+            }
+            sqlException.printStackTrace();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+
     }
 }

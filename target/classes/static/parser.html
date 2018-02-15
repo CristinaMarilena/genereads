@@ -1,164 +1,161 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Piccolo Theme</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Piccolo Theme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- CSS
-================================================== -->
-<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap-responsive.css">
-<link rel="stylesheet" href="css/flexslider.css" />
-<link rel="stylesheet" href="css/custom-styles.css">
+    <!-- CSS
+    ================================================== -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="css/flexslider.css" />
+    <link rel="stylesheet" href="css/custom-styles.css">
 
-<!--[if lt IE 9]>
+    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <link rel="stylesheet" href="css/style-ie.css"/>
-<![endif]--> 
+    <![endif]-->
 
-<!-- Favicons
-================================================== -->
-<link rel="shortcut icon" href="img/favicon.ico">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
 
-<!-- JS
-================================================== -->
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/jquery.custom.js"></script>
-<script type="text/javascript">
-     $(window).load(function(){
+    <!-- JS
+    ================================================== -->
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery.flexslider.js"></script>
+    <script src="js/jquery.custom.js"></script>
+    <script type="text/javascript">
+        $(window).load(function(){
 
-    $('.flexslider').flexslider({
-        animation: "slide",
-        slideshow: true,
-        start: function(slider){
-          $('body').removeClass('loading');
-        }
-    });  
-});
-</script>
+            $('.flexslider').flexslider({
+                animation: "slide",
+                slideshow: true,
+                start: function(slider){
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    </script>
 
 </head>
 
 <body>
-	<div class="color-bar-1"></div>
-    <div class="color-bar-2 color-bg"></div>
-    
-    <div class="container main-container">
-    
-      <div class="row header"><!-- Begin Header -->
-      
+<div class="color-bar-1"></div>
+<div class="color-bar-2 color-bg"></div>
+
+<div class="container main-container">
+
+    <div class="row header"><!-- Begin Header -->
+
         <!-- Logo
-        ================================================== -->
+            ================================================== -->
         <div class="span5 logo">
-        	<a href="index.htm"><img src="img/piccolo-logo.png" alt="" /></a>
-            <h5>Big Things... Small Packages</h5>
+            <a href="index.htm"><img src="img/title_logo.png" alt="" /></a>
+            <h5>The next book you`ll love</h5>
         </div>
-        
+
         <!-- Main Navigation
         ================================================== -->
         <div class="span7 navigation">
             <div class="navbar hidden-phone">
-            
-            <ul class="nav">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="index.htm">Home <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="index.htm">Full Page</a></li>
-                    <li><a href="index-gallery.htm">Gallery Only</a></li>
-                    <li><a href="index-slider.htm">Slider Only</a></li>
+
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.htm">Full Page</a></li>
+                            <li><a href="index-gallery.htm">Gallery Only</a></li>
+                            <li><a href="index-slider.htm">Slider Only</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="/mylibrary">My Library</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Pages <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="page-full-width.htm">Full Width</a></li>
+                            <li><a href="page-right-sidebar.htm">Right Sidebar</a></li>
+                            <li><a href="page-left-sidebar.htm">Left Sidebar</a></li>
+                            <li><a href="page-double-sidebar.htm">Double Sidebar</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Gallery <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
+                            <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
+                            <li><a href="gallery-6col.htm">Gallery 6 Column</a></li>
+                            <li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>
+                            <li><a href="gallery-single.htm">Gallery Single</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Blog <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blog-style1.htm">Blog Style 1</a></li>
+                            <li><a href="blog-style2.htm">Blog Style 2</a></li>
+                            <li><a href="blog-style3.htm">Blog Style 3</a></li>
+                            <li><a href="blog-style4.htm">Blog Style 4</a></li>
+                            <li><a href="blog-single.htm">Blog Single</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="page-contact.htm">Contact</a></li>
                 </ul>
-            </li>
-           <li class="active"><a href="features.htm">Features</a></li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Pages <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="page-full-width.htm">Full Width</a></li>
-                    <li><a href="page-right-sidebar.htm">Right Sidebar</a></li>
-                    <li><a href="page-left-sidebar.htm">Left Sidebar</a></li>
-                    <li><a href="page-double-sidebar.htm">Double Sidebar</a></li>
-                </ul>
-            </li>
-             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Gallery <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
-                    <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
-                    <li><a href="gallery-6col.htm">Gallery 6 Column</a></li>
-                    <li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>
-                    <li><a href="gallery-single.htm">Gallery Single</a></li>
-                </ul>
-             </li>
-             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Blog <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="blog-style1.htm">Blog Style 1</a></li>
-                    <li><a href="blog-style2.htm">Blog Style 2</a></li>
-                    <li><a href="blog-style3.htm">Blog Style 3</a></li>
-                    <li><a href="blog-style4.htm">Blog Style 4</a></li>
-                    <li><a href="blog-single.htm">Blog Single</a></li>
-                </ul>
-             </li>
-             <li><a href="page-contact.htm">Contact</a></li>
-            </ul>
-           
+
             </div>
 
-             <!-- Mobile Nav
-            ================================================== -->
+            <!-- Mobile Nav
+           ================================================== -->
             <form action="#" id="mobile-nav" class="visible-phone">
                 <div class="mobile-nav-select">
-                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
-                    <option value="">Navigate...</option>
-                    <option value="index.htm">Home</option>
+                    <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+                        <option value="">Navigate...</option>
+                        <option value="index.htm">Home</option>
                         <option value="index.htm">- Full Page</option>
                         <option value="index-gallery.htm">- Gallery Only</option>
                         <option value="index-slider.htm">- Slider Only</option>
-                    <option value="features.htm">Features</option>
-                    <option value="page-full-width.htm">Pages</option>
+                        <option value="features.htm">Features</option>
+                        <option value="page-full-width.htm">Pages</option>
                         <option value="page-full-width.htm">- Full Width</option>
                         <option value="page-right-sidebar.htm">- Right Sidebar</option>
                         <option value="page-left-sidebar.htm">- Left Sidebar</option>
                         <option value="page-double-sidebar.htm">- Double Sidebar</option>
-                    <option value="gallery-4col.htm">Gallery</option>
+                        <option value="gallery-4col.htm">Gallery</option>
                         <option value="gallery-3col.htm">- 3 Column</option>
                         <option value="gallery-4col.htm">- 4 Column</option>
                         <option value="gallery-6col.htm">- 6 Column</option>
                         <option value="gallery-4col-circle.htm">- Gallery 4 Col Round</option>
                         <option value="gallery-single.htm">- Gallery Single</option>
-                    <option value="blog-style1.htm">Blog</option>
+                        <option value="blog-style1.htm">Blog</option>
                         <option value="blog-style1.htm">- Blog Style 1</option>
                         <option value="blog-style2.htm">- Blog Style 2</option>
                         <option value="blog-style3.htm">- Blog Style 3</option>
                         <option value="blog-style4.htm">- Blog Style 4</option>
                         <option value="blog-single.htm">- Blog Single</option>
-                    <option value="page-contact.htm">Contact</option>
-                </select>
+                        <option value="page-contact.htm">Contact</option>
+                    </select>
                 </div>
-                </form>
-            
+            </form>
+
         </div>
-        
-      </div><!-- End Header -->
-     
+
+    </div><!-- End Header -->
+
     <!-- Page Content
-    ================================================== --> 
-    
+    ================================================== -->
+
     <!-- Title Header -->
+
+    <br><br>
     <div class="row">
         <div class="span12">
-            <h2>Examples of CSS Elements and jQuery Components</h2>
-            <p class="lead">Piccolo is a minimal style theme built using Bootstrap. Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development. Below are some examples of CSS and typography elements available within Piccolo. For more on Bootstrap, check out <a href="http://twitter.github.com/bootstrap/index.html" target="_blank">the official site</a>.</p>
-        </div> 
-        <div class="span4">
-            <h5>3 Column Layout</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
+            <h2>Here is your personal library that you can share with your friends</h2>
         </div>
         <div class="span4">
             <h5>3 Column Layout</h5>
@@ -168,8 +165,8 @@
             <h5>3 Column Layout</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
         </div>
-        <div class="span3">
-            <h5>4 Column Layout</h5>
+        <div class="span4">
+            <h5>3 Column Layout</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
         </div>
         <div class="span3">
@@ -184,15 +181,19 @@
             <h5>4 Column Layout</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
         </div>
-    </div> 
-    
+        <div class="span3">
+            <h5>4 Column Layout</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
+        </div>
+    </div>
+
     <!-- Grid Example
-    ================================================== --> 
+    ================================================== -->
     <div class="row">
         <div class="span12"><h6 class="title-bg">12 Column:<small> Responsive Grid Layout</small></h6>
-        The responsive Bootstrap grid system utilizes 12 columns. The grid adapts to be 724px and 1170px wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.</div>
+            The responsive Bootstrap grid system utilizes 12 columns. The grid adapts to be 724px and 1170px wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.</div>
     </div>
-    
+
     <div class="row the-grid">
         <div class="span1">1</div>
         <div class="span1">1</div>
@@ -215,7 +216,7 @@
     <div class="row the-grid">
         <div class="span4">4</div>
         <div class="span8">8</div>
-        </div>
+    </div>
     <div class="row the-grid">
         <div class="span6">6</div>
         <div class="span6">6</div>
@@ -223,16 +224,16 @@
     <div class="row the-grid">
         <div class="span12">12</div>
     </div>
-   
+
     <!-- Typography
-    ================================================== --> 
+    ================================================== -->
     <div class="row no-margin">
         <div class="span6"><h6 class="title-bg">Typography: <small>Headings and Dividers</small></h6></div>
         <div class="span6"><h6 class="title-bg">Lead Copy: <small>Start a page in style</small></h6></div>
     </div>
 
     <div class="row">
-         <div class="span3">
+        <div class="span3">
             <h1 class="title-bg">h1. Heading 1</h1>
             <h2 class="title-bg">h2. Heading 2</h2>
             <h3 class="title-bg">h3. Heading 3</h3>
@@ -264,24 +265,24 @@
     </div>
 
 
-<!-- Carousel
-================================================== -->
+    <!-- Carousel
+    ================================================== -->
     <div class="row">
         <div class="span6">
             <h6 class="title-bg">Carousel: <small>Add a Slideshow to Any Page</small></h6>
             <div class="flexslider">
-              <ul class="slides">
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-              </ul>
+                <ul class="slides">
+                    <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
+                    <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
+                    <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
+                    <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
+                    <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
+                </ul>
             </div>
         </div>
 
-<!-- Thumbnail Grid
-================================================== -->
+        <!-- Thumbnail Grid
+        ================================================== -->
         <div class="span6">
             <h6 class="title-bg">Thumbnails: <small>Easily create a grid of thumbnails</small></h6>
 
@@ -297,8 +298,8 @@
 
 
 
-<!-- Accordian (Collapse)
-================================================== --> 
+    <!-- Accordian (Collapse)
+    ================================================== -->
     <div class="row">
         <div class="span6">
             <h6 class="title-bg">Accordian: <small>Allows for Collapsed Content</small></h6>
@@ -307,12 +308,12 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                        Collapsible Group Item #1
+                            Collapsible Group Item #1
                         </a>
                     </div>
                     <div id="collapseOne" class="accordion-body collapse in">
                         <div class="accordion-inner">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. 
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
                     </div>
                 </div>
@@ -320,25 +321,25 @@
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                        Collapsible Group Item #2
+                            Collapsible Group Item #2
                         </a>
                     </div>
                     <div id="collapseTwo" class="accordion-body collapse">
                         <div class="accordion-inner">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. 
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
                     </div>
                 </div>
 
-                 <div class="accordion-group">
+                <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                        Collapsible Group Item #3
+                            Collapsible Group Item #3
                         </a>
                     </div>
                     <div id="collapseThree" class="accordion-body collapse">
                         <div class="accordion-inner">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. 
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
                     </div>
                 </div>
@@ -347,38 +348,38 @@
 
         </div>
 
-    <!-- Tabs
-    ================================================== --> 
+        <!-- Tabs
+        ================================================== -->
         <div class="span6">
             <h6 class="title-bg">Tabs: <small>Allows for Tabbed Content</small></h6>
 
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-                    <li><a href="#profile" data-toggle="tab">Profile</a></li>
-                    <li><a href="#messages" data-toggle="tab">Messages</a></li>
-                    <li><a href="#settings" data-toggle="tab">Settings</a></li>
-                </ul>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+                <li><a href="#profile" data-toggle="tab">Profile</a></li>
+                <li><a href="#messages" data-toggle="tab">Messages</a></li>
+                <li><a href="#settings" data-toggle="tab">Settings</a></li>
+            </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="home">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. 
-                    </div>
-                    <div class="tab-pane" id="profile">
-                        Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. 
-                    </div>
-                    <div class="tab-pane" id="messages">
-                        Enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                    </div>
-                    <div class="tab-pane" id="settings">
-                        Cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                    </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                 </div>
+                <div class="tab-pane" id="profile">
+                    Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+                <div class="tab-pane" id="messages">
+                    Enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                </div>
+                <div class="tab-pane" id="settings">
+                    Cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                </div>
+            </div>
         </div>
 
     </div>
 
     <!-- Modal
-    ================================================== --> 
+    ================================================== -->
     <div class="row">
         <div class="span4">
             <h6 class="title-bg">Modal: <small>Click below for an example</small></h6>
@@ -387,24 +388,24 @@
             </div>
         </div>
 
-    <!-- Modal -->
-    <div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel">Modal header</h5>
+        <!-- Modal -->
+        <div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 id="myModalLabel">Modal header</h5>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-inverse">Save changes</button>
+            </div>
         </div>
-        <div class="modal-body">
-            <p>One fine body…</p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <button class="btn btn-inverse">Save changes</button>
-        </div>
-    </div>
 
-    <!-- Tooltip
-    ================================================== --> 
-     <div class="span4">
+        <!-- Tooltip
+        ================================================== -->
+        <div class="span4">
             <h6 class="title-bg">Tooltip: <small>Hover below for an example</small></h6>
             <div class="well">
                 Tight pants next level <a href="#" rel="tooltip" title="default tooltip">keffiyeh</a> you probably haven't heard of them. Photo booth beard raw denim letterpress.
@@ -412,8 +413,8 @@
         </div>
 
 
-    <!-- Popover
-    ================================================== --> 
+        <!-- Popover
+        ================================================== -->
         <div class="span4">
             <h6 class="title-bg">Popover: <small>Hover below for an example</small></h6>
             <div class="well">
@@ -424,7 +425,7 @@
     </div>
 
     <!-- Form Elements
-    ================================================== --> 
+    ================================================== -->
     <div class="row form-examples">
 
         <div class="span12">
@@ -444,7 +445,7 @@
             <div class="input-append">
                 <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Go!</button>
             </div>
-             
+
             <div class="input-append">
                 <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
             </div>
@@ -452,52 +453,52 @@
 
         <div class="span4">
             <form class="form-search">
-            <div class="input-append">
-                <input type="text" class="span2 search-query">
-                <button type="submit" class="btn">Search</button>
-            </div>
-            <div class="input-prepend">
-                <button type="submit" class="btn">Search</button>
-                <input type="text" class="span2 search-query">
-            </div>
+                <div class="input-append">
+                    <input type="text" class="span2 search-query">
+                    <button type="submit" class="btn">Search</button>
+                </div>
+                <div class="input-prepend">
+                    <button type="submit" class="btn">Search</button>
+                    <input type="text" class="span2 search-query">
+                </div>
             </form>
         </div>
-          
+
     </div>
 
     <!-- Buttons
-    ================================================== --> 
+    ================================================== -->
     <div class="row">
         <div class="span4">
             <h6 class="title-bg">Buttons: <small>Small, Medium and Large</small></h6>
             <h6>Large Button</h6>
             <p><button class="btn btn-large" type="button">Default</button>
-            <button class="btn btn-large btn-warning" type="button">Info</button>
-            <button class="btn btn-large btn-inverse" type="button">Inverse</button></p>
+                <button class="btn btn-large btn-warning" type="button">Info</button>
+                <button class="btn btn-large btn-inverse" type="button">Inverse</button></p>
 
             <h6>Default Button</h6>
             <p><button class="btn" type="button">Default</button>
-            <button class="btn btn-warning" type="button">Info</button>
-            <button class="btn btn-inverse" type="button">Inverse</button></p>
+                <button class="btn btn-warning" type="button">Info</button>
+                <button class="btn btn-inverse" type="button">Inverse</button></p>
 
             <h6>Small Button</h6>
             <p><button class="btn btn-small" type="button">Default</button>
-            <button class="btn btn-small btn-warning" type="button">Info</button>
-            <button class="btn btn-small btn-inverse" type="button">Inverse</button></p>
+                <button class="btn btn-small btn-warning" type="button">Info</button>
+                <button class="btn btn-small btn-inverse" type="button">Inverse</button></p>
 
             <h6>Mini Button</h6>
             <p><button class="btn btn-mini" type="button">Default</button>
-            <button class="btn btn-mini btn-warning" type="button">Info</button>
-            <button class="btn btn-mini btn-inverse" type="button">Inverse</button></p>
+                <button class="btn btn-mini btn-warning" type="button">Info</button>
+                <button class="btn btn-mini btn-inverse" type="button">Inverse</button></p>
         </div>
 
         <!-- Alerts
-        ================================================== --> 
+        ================================================== -->
         <div class="span4">
-            <h6 class="title-bg">Alerts: <small>Provide user feedback</small></h6>      
+            <h6 class="title-bg">Alerts: <small>Provide user feedback</small></h6>
             <div class="alert alert-error">
                 <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>Oh snap!</strong> Change a few things and try again. 
+                <strong>Oh snap!</strong> Change a few things and try again.
             </div>
             <div class="alert alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button>
@@ -505,18 +506,18 @@
             </div>
             <div class="alert alert-success">
                 <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>Well done!</strong> You successfully read this alert message. 
+                <strong>Well done!</strong> You successfully read this alert message.
             </div>
             <div class="alert alert-info">
                 <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>Heads up!</strong> This alert is not super important. 
-            </div>  
+                <strong>Heads up!</strong> This alert is not super important.
+            </div>
         </div>
 
         <!-- Progress Bars
-        ================================================== --> 
+        ================================================== -->
         <div class="span4">
-            <h6 class="title-bg">Progress Bars: <small>Keep track</small></h6> 
+            <h6 class="title-bg">Progress Bars: <small>Keep track</small></h6>
             <div class="progress progress-info progress-striped">
                 <div class="bar" style="width: 20%"></div>
             </div>
@@ -534,7 +535,7 @@
     </div>
 
     <!-- Icons
-    ================================================== --> 
+    ================================================== -->
     <div class="row">
         <div class="span12"><h6 class="title-bg">Icons: <small>provided by Glyphicons</small></h6></div>
         <div class="span12">
@@ -567,7 +568,7 @@
                 <li><i class="icon-download"></i> icon-download</li>
                 <li><i class="icon-upload"></i> icon-upload</li>
                 <li><i class="icon-inbox"></i> icon-inbox</li>
-       
+
                 <li><i class="icon-play-circle"></i> icon-play-circle</li>
                 <li><i class="icon-repeat"></i> icon-repeat</li>
                 <li><i class="icon-refresh"></i> icon-refresh</li>
@@ -686,86 +687,86 @@
             </ul>
         </div>
     </div>
-    
-    </div> <!-- End Container -->
 
-    <!-- Footer Area
-        ================================================== -->
+</div> <!-- End Container -->
 
-	<div class="footer-container"><!-- Begin Footer -->
-    	<div class="container">
-        	<div class="row footer-row">
-                <div class="span3 footer-col">
-                    <h5>About Us</h5>
-                   <img src="img/piccolo-footer-logo.png" alt="Piccolo" /><br /><br />
-                    <address>
-                        <strong>Design Team</strong><br />
-                        123 Main St, Suite 500<br />
-                        New York, NY 12345<br />
-                    </address>
-                    <ul class="social-icons">
-                        <li><a href="#" class="social-icon facebook"></a></li>
-                        <li><a href="#" class="social-icon twitter"></a></li>
-                        <li><a href="#" class="social-icon dribble"></a></li>
-                        <li><a href="#" class="social-icon rss"></a></li>
-                        <li><a href="#" class="social-icon forrst"></a></li>
-                    </ul>
-                </div>
-                <div class="span3 footer-col">
-                    <h5>Latest Tweets</h5>
-                    <ul>
-                        <li><a href="#">@room122</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        <li><a href="#">@room122</a> In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi blandit ultricies ultrices.</li>
-                        <li><a href="#">@room122</a> Vivamus nec lectus sed orci molestie molestie. Etiam mattis neque eu orci rutrum aliquam.</li>
-                    </ul>
-                </div>
-                <div class="span3 footer-col">
-                    <h5>Latest Posts</h5>
-                     <ul class="post-list">
-                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                        <li><a href="#">Consectetur adipiscing elit est lacus gravida</a></li>
-                        <li><a href="#">Lectus sed orci molestie molestie etiam</a></li>
-                        <li><a href="#">Mattis consectetur adipiscing elit est lacus</a></li>
-                        <li><a href="#">Cras rutrum, massa non blandit convallis est</a></li>
-                    </ul>
-                </div>
-                <div class="span3 footer-col">
-                    <h5>Flickr Photos</h5>
-                    <ul class="img-feed">
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                    </ul>
-                </div>
+<!-- Footer Area
+    ================================================== -->
+
+<div class="footer-container"><!-- Begin Footer -->
+    <div class="container">
+        <div class="row footer-row">
+            <div class="span3 footer-col">
+                <h5>About Us</h5>
+                <img src="img/piccolo-footer-logo.png" alt="Piccolo" /><br /><br />
+                <address>
+                    <strong>Design Team</strong><br />
+                    123 Main St, Suite 500<br />
+                    New York, NY 12345<br />
+                </address>
+                <ul class="social-icons">
+                    <li><a href="#" class="social-icon facebook"></a></li>
+                    <li><a href="#" class="social-icon twitter"></a></li>
+                    <li><a href="#" class="social-icon dribble"></a></li>
+                    <li><a href="#" class="social-icon rss"></a></li>
+                    <li><a href="#" class="social-icon forrst"></a></li>
+                </ul>
             </div>
+            <div class="span3 footer-col">
+                <h5>Latest Tweets</h5>
+                <ul>
+                    <li><a href="#">@room122</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    <li><a href="#">@room122</a> In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi blandit ultricies ultrices.</li>
+                    <li><a href="#">@room122</a> Vivamus nec lectus sed orci molestie molestie. Etiam mattis neque eu orci rutrum aliquam.</li>
+                </ul>
+            </div>
+            <div class="span3 footer-col">
+                <h5>Latest Posts</h5>
+                <ul class="post-list">
+                    <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                    <li><a href="#">Consectetur adipiscing elit est lacus gravida</a></li>
+                    <li><a href="#">Lectus sed orci molestie molestie etiam</a></li>
+                    <li><a href="#">Mattis consectetur adipiscing elit est lacus</a></li>
+                    <li><a href="#">Cras rutrum, massa non blandit convallis est</a></li>
+                </ul>
+            </div>
+            <div class="span3 footer-col">
+                <h5>Flickr Photos</h5>
+                <ul class="img-feed">
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                </ul>
+            </div>
+        </div>
 
-            <div class="row"><!-- Begin Sub Footer -->
-                <div class="span12 footer-col footer-sub">
-                    <div class="row no-margin">
-                        <div class="span6"><span class="left">Copyright 2012 Piccolo Theme. All rights reserved.</span></div>
-                        <div class="span6">
+        <div class="row"><!-- Begin Sub Footer -->
+            <div class="span12 footer-col footer-sub">
+                <div class="row no-margin">
+                    <div class="span6"><span class="left">Copyright 2012 Piccolo Theme. All rights reserved.</span></div>
+                    <div class="span6">
                             <span class="right">
                             <a href="#">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Gallery</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Blog</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact</a>
                             </span>
-                        </div>
                     </div>
                 </div>
-            </div><!-- End Sub Footer -->
+            </div>
+        </div><!-- End Sub Footer -->
 
-        </div>
-    </div><!-- End Footer -->
+    </div>
+</div><!-- End Footer -->
 
-    <!-- Scroll to Top -->  
-    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-    
+<!-- Scroll to Top -->
+<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
 </body>
 </html>
