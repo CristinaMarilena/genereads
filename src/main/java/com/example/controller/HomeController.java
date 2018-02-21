@@ -11,4 +11,9 @@ public class HomeController {
     public String home(){
         return "index.htm";
     }
+
+
+   /*
+	Commit from another machine success.
+   */
 }
