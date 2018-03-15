@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.examples.AddAccountExample;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,13 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class HomeController {
 
-    @RequestMapping("/homehome")
+    @RequestMapping("/")
     public String home(){
         return "index.htm";
     }
 
-
-   /*
-	Commit from another machine success.
-   */
+    @RequestMapping("/addaccount")
+    public String addAccountEx(){
+        new AddAccountExample().addAccount();
+        return "yey";
+    }
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ParserController {
 
-    @RequestMapping("/")
+    @RequestMapping("/parser")
     public String returnParserPage(){
         return "parser.html";
     }
