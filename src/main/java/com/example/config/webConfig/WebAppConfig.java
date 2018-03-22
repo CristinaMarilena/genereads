@@ -65,4 +65,16 @@ public class WebAppConfig {
         transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
     }
+
+    // FIXME: Maybe replace the `HibernateTransactionManager` with this more complete one?
+
+    //    @Bean
+    //    @Autowired
+    //    public HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory,
+    //                                                                   DataSource dataSource) throws IOException {
+    //        HibernateTransactionManager hibernateTransactionManager= new HibernateTransactionManager();
+    //        hibernateTransactionManager.setSessionFactory(sessionFactory);
+    //        hibernateTransactionManager.setDataSource(dataSource);
+    //        return hibernateTransactionManager;
+    //    }
 }

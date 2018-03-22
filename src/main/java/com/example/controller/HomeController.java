@@ -1,12 +1,15 @@
 package com.example.controller;
 
 import com.example.examples.AddAccountExample;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    AddAccountExample addAccount;
 
     @RequestMapping("/")
     public String home(){
@@ -15,7 +18,7 @@ public class HomeController {
 
     @RequestMapping("/addaccount")
     public String addAccountEx(){
-        new AddAccountExample().addAccount();
+        addAccount.addAccount();
         return "yey";
     }
 }
