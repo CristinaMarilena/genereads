@@ -29,7 +29,7 @@ public class AddAccountExample {
         try {
             session.beginTransaction();
 
-            session.save(new Account(757, "jhda", "dwssdwadwqadssddw"));
+            session.save(new Account("gdewhj", "dwssdwadwqadssddw"));
 
             System.out.println("\n.......Records Saved Successfully To The Database.......\n");
 

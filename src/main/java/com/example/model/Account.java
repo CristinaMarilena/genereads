@@ -1,9 +1,6 @@
 package com.example.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "account")
@@ -11,6 +8,7 @@ public class Account {
 
     @Id
     @Column(name = "userId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
     @Column(name = "username")
@@ -19,8 +17,11 @@ public class Account {
     @Column(name = "password")
     private String password;
 
-    public Account(int userId, String username, String password) {
-        this.userId = userId;
+    public Account(){
+
+    }
+
+    public Account(String username, String password) {
         this.username = username;
         this.password = password;
     }
