@@ -24,8 +24,11 @@ public class AccountDAOImpl implements AccountDAO {
 
     public void updateAccount(Account account) {
         Account accountToUpdate = getAccount(account.getUserId());
+        accountToUpdate.setEmail(account.getEmail());
         accountToUpdate.setUsername(account.getUsername());
         accountToUpdate.setPassword(account.getPassword());
+        accountToUpdate.setStatus(account.getStatus());
+        accountToUpdate.setPhoto(account.getPhoto());
         getCurrentSession().update(accountToUpdate);
 
     }

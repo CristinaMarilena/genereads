@@ -2,8 +2,6 @@ package com.example.controller;
 
 import com.example.model.Account;
 import com.example.service.AccountService;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +35,20 @@ public class AccountController {
     @RequestMapping(value = "update/{id}", method = RequestMethod.PUT)
     public Account update(@PathVariable int id, @RequestBody Account account) {
         Account existingAccount = accountService.getAccount(id);
-        BeanUtils.copyProperties(account, existingAccount);
+
+        if(account.getEmail() != null){
+            existingAccount.setEmail(account.getEmail());
+        }
+        if(account.getStatus() != null){
+            existingAccount.setStatus(account.getStatus());
+        }
+        if(account.getPassword() != null){
+            existingAccount.setPassword(account.getPassword());
+        }
+        if(account.getPhoto() != null){
+            existingAccount.setPhoto(account.getPhoto());
+        }
+
         accountService.updateAccount(existingAccount);
         return account;
     }
