@@ -7,9 +7,9 @@ import javax.persistence.*;
 public class Account {
 
     @Id
-    @Column(name = "userId")
+    @Column(name = "userid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userId;
+    private int userid;
 
     @Column(name = "username")
     private String username;
@@ -26,12 +26,12 @@ public class Account {
         this.password = password;
     }
 
-    public int getUserid() {
-        return userId;
+    public int getUserId() {
+        return userid;
     }
 
     public void setUserid(int userid) {
-        this.userId = userid;
+        this.userid = userid;
     }
 
     public String getUsername() {

@@ -1,7 +1,5 @@
 package com.example.config.webConfig;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
-import java.io.IOException;
 import java.util.Properties;
 
 @Configuration
@@ -69,16 +66,4 @@ public class WebAppConfig {
         transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
     }
-
-/*    // FIXME: Maybe replace the `HibernateTransactionManager` with this more complete one?
-
-    @Bean
-    @Autowired
-    public HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory,
-                                                                   DataSource dataSource) throws IOException {
-        HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
-        hibernateTransactionManager.setSessionFactory(sessionFactory);
-        hibernateTransactionManager.setDataSource(dataSource);
-        return hibernateTransactionManager;
-    }*/
 }

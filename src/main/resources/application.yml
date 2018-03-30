@@ -32,3 +32,4 @@ db.password: Givemechocolate9.
 hibernate.dialect: org.hibernate.dialect.MySQLDialect
 hibernate.show_sql: true
 entitymanager.packages.to.scan: com.example
+

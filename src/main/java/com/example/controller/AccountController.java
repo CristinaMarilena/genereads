@@ -38,7 +38,7 @@ public class AccountController {
     public Account update(@PathVariable int id, @RequestBody Account account) {
         Account existingAccount = accountService.getAccount(id);
         BeanUtils.copyProperties(account, existingAccount);
-        accountService.updateAccount(account);
+        accountService.updateAccount(existingAccount);
         return account;
     }
 

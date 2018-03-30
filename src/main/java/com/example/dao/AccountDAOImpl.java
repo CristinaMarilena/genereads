@@ -22,11 +22,11 @@ public class AccountDAOImpl implements AccountDAO {
         getCurrentSession().save(Account);
     }
 
-    public void updateAccount(Account Account) {
-        Account AccountToUpdate = getAccount(Account.getUserid());
-        AccountToUpdate.setUsername(Account.getUsername());
-        AccountToUpdate.setPassword(Account.getPassword());
-        getCurrentSession().update(AccountToUpdate);
+    public void updateAccount(Account account) {
+        Account accountToUpdate = getAccount(account.getUserId());
+        accountToUpdate.setUsername(account.getUsername());
+        accountToUpdate.setPassword(account.getPassword());
+        getCurrentSession().update(accountToUpdate);
 
     }
 
@@ -41,7 +41,6 @@ public class AccountDAOImpl implements AccountDAO {
             getCurrentSession().delete(Account);
     }
 
-    @SuppressWarnings("unchecked")
     public List<Account> getAccounts() {
         return getCurrentSession().createQuery("from Account").list();
     }
