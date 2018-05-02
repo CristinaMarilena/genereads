@@ -1,13 +1,18 @@
 package com.example.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
 @Table(name = "account")
+@Proxy(lazy = false)
 public class Account {
 
     @Id
@@ -108,5 +113,8 @@ public class Account {
         this.password = password;
     }
 
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
 }

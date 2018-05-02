@@ -31,16 +31,27 @@
     <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
 
+    <!-- Angular js
+    ================================================== -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.js"></script>
+
     <!-- JS
     ================================================== -->
-    <script src="js/bootstrap.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/jquery.flexslider.js"></script>
     <script src="js/jquery.custom.js"></script>
-    <!--  <script src="js/googleLogin.js"></script>-->
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/home.controller.js"></script>
-    <!-- <script src="js/facebookLogin.js"></script>-->
+
+    <script src="js/bootstrap.js"></script>
+
+
+    <script src="js/app.js"></script>
+    <script src="js/accountController.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -76,7 +87,7 @@
 
 </head>
 
-<body class="home" ng-app="app" ng-controller="homeController as home">
+<body class="home" ng-app="app" ng-controller="AccountController">
 <!-- Color Bars (above header)-->
 <div class="color-bar-1"></div>
 <div class="color-bar-2 color-bg"></div>
@@ -89,6 +100,12 @@
                 Login <i class="icon-user"></i>
             </button>
         </a>
+
+        <a href="/signup">
+            <button class="button-sign-up btn btn-large" type="button" value="Sign up">
+                Sign up <i class="icon-hand-up"></i>
+            </button>
+        </a>
     </div>
 
 
@@ -97,7 +114,7 @@
         <!-- Logo
         ================================================== -->
         <div class="span5 logo">
-            <a href="index.htm"><img src="img/title_logo.png" alt=""/></a>
+            <a href="/index.htm"><img src="img/title_logo.png" alt=""/></a>
             <h5>The next book you`ll love</h5>
         </div>
     </div>

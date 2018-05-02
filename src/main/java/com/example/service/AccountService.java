@@ -16,4 +16,6 @@ public interface AccountService {
 
     public List<Account> getAccounts();
 
+    public Account findByEmail(String email);
+
 }

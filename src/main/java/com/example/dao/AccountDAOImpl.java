@@ -50,4 +50,9 @@ public class AccountDAOImpl implements AccountDAO {
         return getCurrentSession().createQuery("from Account").list();
     }
 
+    public Account findByEmail(String email){
+        List<Account> accountList = getCurrentSession().createQuery("from Account where username = '" + email + "'").list();
+        return accountList.get(0);
+    }
+
 }

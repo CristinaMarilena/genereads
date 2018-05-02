@@ -16,4 +16,6 @@ public interface AccountDAO {
 
     public List<Account> getAccounts();
 
+    public Account findByEmail(String email);
+
 }

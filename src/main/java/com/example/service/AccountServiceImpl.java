@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.model.Account;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     public Account getAccount(int id) {
-        return accountDAO.getAccount(id);
+        Account account = accountDAO.getAccount(id);
+        return account;
     }
 
     public void deleteAccount(int id) {
@@ -40,4 +42,7 @@ public class AccountServiceImpl implements AccountService {
         return accountDAO.getAccounts();
     }
 
+    public Account findByEmail(String email) {
+        return accountDAO.findByEmail(email);
+    }
 }
