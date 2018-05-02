@@ -10,10 +10,94 @@
     <!--Google Sign In-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/facebookAndGoogle.css">
+
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/signController.js"></script>
+    <script type="text/javascript" src="js/googleLogin.js"></script>
+    <script type="text/javascript" src="js/facebookLogin.js"></script>
+
+</head>
+<body>
+
+
+
+<input type="radio" checked id="toggle--login" name="toggle" class="ghost" />
+<input type="radio" id="toggle--signup" name="toggle" class="ghost" />
+
+<img class="logo framed" src="img/title_logo_white.png" alt="GeneReads logo" />
+
+
+<form class="form form--login framed" ng-controller="signController">
+    <input type="email" placeholder="Email" class="input input--top" id="login_email" />
+    <input type="password" placeholder="Password" class="input" id="login_password"/>
+    <input type="submit" value="Login" class="input input--submit" />
+
+    <label for="toggle--signup" class="text text--small text--centered">New? <b>Sign up</b></label>
+</form>
+
+<form class="form form--signup framed" ng-controller="signController">
+    <h2 class="text text--centered text--omega">Join the other <b>152.6 thousand</b> people and</br>share all the books that you love.</h2>
+
+    <input type="email" placeholder="Email" class="input input--top" id="sign_email"/>
+    <input type="text" placeholder="Username" class="input" id="sign_username"/>
+    <input type="password" placeholder="Password" class="input" id="sign_password"/>
+    <input type="password" placeholder="Confirm password" class="input" id="sign_confirm_password"/>
+    <input type="submit" value="Sign up" class="input input--submit" />
+
+    <label for="toggle--login" class="text text--small text--centered">Not new? <b>Log in</b></label>
+</form>
+
+<div class="legal">
+    <a class="text text--small text--border-right" href="javascript:;">Terms</a>
+    <a class="text text--small text--border-right" href="javascript:;">Privacy</a>
+    <a class="text text--small" href="javascript:;">Password help</a>
+</div>
+
+<div class="photo-cred">
+    <a class="text text--small" title="Check out their blog." href="http://cabinporn.com/post/125371354365/the-cabin-book-book-in-the-wild-21-in-the-us" target="_blank">Photo posted by <b>cabinporn</b></a>
+</div>
+
+<div class="fullscreen-bg"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+
+    &lt;!&ndash;Google meta-data&ndash;&gt;
+    <meta name="google-signin-client_id" content="49028948097-abc28eprft8ricne642tpb3793mt3hj7.apps.googleusercontent.com">
+
+    &lt;!&ndash;Google Sign In&ndash;&gt;
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/facebookAndGoogle.css">
 
-    <script type="text/javascript" src="js/sign-in.js"></script>
+    <script type="text/javascript" src="js/signController.js"></script>
     <script type="text/javascript" src="js/googleLogin.js"></script>
     <script type="text/javascript" src="js/facebookLogin.js"></script>
 
@@ -31,7 +115,7 @@
                 <input type="checkbox" value="Remember me" class="checkbox"/> <span>Remember me</span>
             </label>
 
-            <!--Sign in with Google/Facebook-->
+            &lt;!&ndash;Sign in with Google/Facebook&ndash;&gt;
 
             <div class="sign-in" ng-show="!home.authenticated">
 
@@ -50,14 +134,14 @@
                 </div>
             </div>
 
-           <!-- <div class="sign-in" ng-show="home.authenticated">
+           &lt;!&ndash; <div class="sign-in" ng-show="home.authenticated">
                 Logged in as : <span ng-bind="home.user"></span>
                 <br/>
                 <button ng-click="home.logout()" class="btn btn-primary">Logout</button>
-            </div>-->
+            </div>&ndash;&gt;
 
         </form>
     </div>
 </div>
 </body>
-</html>
+</html>-->

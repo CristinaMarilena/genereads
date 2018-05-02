@@ -1,7 +1,9 @@
 package com.example.service;
 
 import com.example.model.Account;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,26 +15,34 @@ import com.example.dao.AccountDAO;
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
-    private AccountDAO AccountDAO;
+    private AccountDAO accountDAO;
 
-    public void addAccount(Account Account) {
-        AccountDAO.addAccount(Account);
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public void addAccount(Account account) {
+        account.setPassword(passwordEncoder.encode(account.getPassword()));
+        accountDAO.addAccount(account);
     }
 
     public void updateAccount(Account Account) {
-        AccountDAO.updateAccount(Account);
+        accountDAO.updateAccount(Account);
     }
 
     public Account getAccount(int id) {
-        return AccountDAO.getAccount(id);
+        Account account = accountDAO.getAccount(id);
+        return account;
     }
 
     public void deleteAccount(int id) {
-        AccountDAO.deleteAccount(id);
+        accountDAO.deleteAccount(id);
     }
 
     public List<Account> getAccounts() {
-        return AccountDAO.getAccounts();
+        return accountDAO.getAccounts();
     }
 
+    public Account findByEmail(String email) {
+        return accountDAO.findByEmail(email);
+    }
 }

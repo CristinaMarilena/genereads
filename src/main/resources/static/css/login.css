@@ -96,7 +96,15 @@ label span {
     position: fixed;
     right: 100px;
     top: 70px;
+    width: 100px;
 }
+
+.button-sign-up{
+    position: fixed;
+    right: 200px;
+    top: 70px;
+}
+
 .bg {
     /* The image used */
     background-image: url("../img/sign-in.jpg");

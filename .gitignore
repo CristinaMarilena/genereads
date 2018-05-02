@@ -6,3 +6,4 @@ target/
 *.logs
 *.iml
 .idea/
+node_modules/

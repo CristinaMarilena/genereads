@@ -1,36 +1,100 @@
 package com.example.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.Proxy;
+
+import javax.persistence.*;
+import java.sql.Blob;
+import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Table(name = "account")
+@Proxy(lazy = false)
 public class Account {
 
     @Id
-    @Column(name = "userId")
-    private int userId;
+    @Column(name = "userid")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userid;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
 
     @Column(name = "password")
     private String password;
 
-    public Account(int userId, String username, String password) {
-        this.userId = userId;
+    @Column(name = "email", unique = true)
+    private String email;
+
+    @Column(name = "created_at")
+    @CreationTimestamp
+    private Date createdAt;
+
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "photo")
+    private Blob photo;
+
+    public Account(){
+
+    }
+
+
+    public Account(String username, String password, String email, String status, Blob photo) {
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.createdAt = new Date();
+        this.status = status;
+        this.photo = photo;
     }
 
     public int getUserid() {
-        return userId;
+        return userid;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt() {
+        this.createdAt = new Date();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Blob getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Blob photo) {
+        this.photo = photo;
+    }
+
+    public int getUserId() {
+        return userid;
     }
 
     public void setUserid(int userid) {
-        this.userId = userid;
+        this.userid = userid;
     }
 
     public String getUsername() {
@@ -49,5 +113,8 @@ public class Account {
         this.password = password;
     }
 
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
 }
