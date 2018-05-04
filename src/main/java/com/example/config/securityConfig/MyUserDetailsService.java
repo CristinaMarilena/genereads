@@ -42,7 +42,7 @@ public class MyUserDetailsService implements UserDetailsService {
                 throw new UsernameNotFoundException("No account found with email: " + email);
             }
 
-            return new org.springframework.security.core.userdetails.User(account.getUsername(), account.getPassword(),true, true, true, true, getAuthorities());
+            return new org.springframework.security.core.userdetails.User(account.getEmail(), account.getPassword(),true, true, true, true, getAuthorities());
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }

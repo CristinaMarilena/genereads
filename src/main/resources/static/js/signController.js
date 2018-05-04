@@ -1,4 +1,5 @@
-app.controller("signController", function ($http, $location, $scope, AccountService) {
+app.controller("signController", function ($http, $location, $scope, AccountService, AccountEmailService,
+                                           LoginService) {
 
 
     function authentication() {
@@ -28,7 +29,7 @@ app.controller("signController", function ($http, $location, $scope, AccountServ
     }
 
     $scope.confirmPassword = "";
-    $scope.notMatchedPasswords = false;
+    $scope.invalid = false;
 
     document.getElementById("sign-up-form").onsubmit = function () {
         signUp()
@@ -40,19 +41,47 @@ app.controller("signController", function ($http, $location, $scope, AccountServ
 
         if ($scope.confirmPassword == $scope.account.password) {
 
-            $scope.addAccount = function () { //create a new movie. Issues a POST to /api/movies
+            $scope.addAccount = function () { //create a new account. Issues a POST to /api/v1/accounts
                 $scope.account.$save(function () {
-                    console.log("Account created succesfully"); // on success go back to home i.e. movies state.
+                    console.log("Account created succesfully"); // on success go back to home i.e. account state.
                 });
             };
 
             $scope.addAccount();
-            $scope.notMatchedPasswords = false;
+            $scope.invalid = false;
             window.location.href = "/";
         }
-        else{
-            $scope.notMatchedPasswords = true;
+        else {
+            $scope.invalid = true;
         }
+    }
+
+
+    /*Login*/
+    document.getElementById("login-form").onsubmit = function () {
+        login()
+    };
+
+    $scope.loggedAccount = new LoginService();
+
+    function login() {
+        debugger;
+        var account = AccountEmailService.get({email: $scope.account.email}, function () {
+            console.log(account.email);
+
+
+            $scope.loggedAccount.email = account.email;
+            $scope.loggedAccount.password = account.password;
+            $scope.loggedAccount.username = account.username;
+
+            $scope.loginAccount = function () {
+                $scope.loggedAccount.$save(function () {
+                    console.log("Account logged in successfully"); // on success go back to home i.e. account state.
+                });
+            };
+
+            $scope.loginAccount();
+        });
     }
 });
 

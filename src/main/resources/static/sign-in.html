@@ -5,13 +5,32 @@
     <title>Sign In</title>
 
     <!--Google meta-data-->
-    <meta name="google-signin-client_id" content="49028948097-abc28eprft8ricne642tpb3793mt3hj7.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+          content="49028948097-abc28eprft8ricne642tpb3793mt3hj7.apps.googleusercontent.com">
 
     <!--Google Sign In-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="css/facebookAndGoogle.css">
+
+    <!-- Angular js
+================================================== -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.js"></script>
+
+    <!-- JS
+    ================================================== -->
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.flexslider.js"></script>
+    <script src="js/jquery.custom.js"></script>
+
+    <script src="js/bootstrap.js"></script>
 
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/signController.js"></script>
@@ -20,128 +39,50 @@
 
 </head>
 <body>
+<div ng-app="app" ng-controller="signController">
+    <input type="radio" id="toggle--signup" name="toggle" class="ghost"/>
+    <input type="radio" checked id="toggle--login" name="toggle" class="ghost"/>
+
+    <img class="logo framed" src="img/title_logo_white.png" alt="GeneReads logo"/>
 
 
+    <form id="sign-up-form" class="form form--signup framed">
+        <h2 class="text text--centered text--omega">Join the other <b>152.6 thousand</b> people and</br>share all the
+            books that you love.</h2>
 
-<input type="radio" checked id="toggle--login" name="toggle" class="ghost" />
-<input type="radio" id="toggle--signup" name="toggle" class="ghost" />
+        <input type="email" placeholder="Email" class="input input--top" ng-model="account.email"/>
+        <input type="text" placeholder="Username" class="input" ng-model="account.username"/>
+        <input type="password" placeholder="Password" class="input" ng-model="account.password"/>
+        <input type="password" placeholder="Confirm Password" class="input" ng-model="confirmPassword"/>
+        <input type="submit" value="Sign up" class="input input--submit"/>
+        <label class="text--centered text--notmatch" ng-if="invalid">Passwords do not match!</label>
 
-<img class="logo framed" src="img/title_logo_white.png" alt="GeneReads logo" />
+        <label for="toggle--login" class="text text--small text--centered">Not new? <b>Log in</b></label>
+    </form>
 
+    <form id="login-form" class="form form--login framed">
+        <input type="email" placeholder="Email" class="input input--top" ng-model="account.email"/>
+        <input type="password" placeholder="Password" class="input" ng-model="account.password"/>
+        <input type="submit" value="Login" class="input input--submit"/>
+        <label class="text--centered text--notmatch" ng-if="invalid">Passwords do not match!</label>
 
-<form class="form form--login framed" ng-controller="signController">
-    <input type="email" placeholder="Email" class="input input--top" id="login_email" />
-    <input type="password" placeholder="Password" class="input" id="login_password"/>
-    <input type="submit" value="Login" class="input input--submit" />
+        <label for="toggle--signup" class="text text--small text--centered">New? <b>Sign up</b></label>
+    </form>
 
-    <label for="toggle--signup" class="text text--small text--centered">New? <b>Sign up</b></label>
-</form>
+    <div class="legal">
+        <a class="text text--small text--border-right" href="javascript:;">Terms</a>
+        <a class="text text--small text--border-right" href="javascript:;">Privacy</a>
+        <a class="text text--small" href="javascript:;">Password help</a>
+    </div>
 
-<form class="form form--signup framed" ng-controller="signController">
-    <h2 class="text text--centered text--omega">Join the other <b>152.6 thousand</b> people and</br>share all the books that you love.</h2>
+    <div class="photo-cred">
+        <a class="text text--small" title="Check out their blog."
+           href="http://cabinporn.com/post/125371354365/the-cabin-book-book-in-the-wild-21-in-the-us" target="_blank">Photo
+            posted by <b>cabinporn</b></a>
+    </div>
 
-    <input type="email" placeholder="Email" class="input input--top" id="sign_email"/>
-    <input type="text" placeholder="Username" class="input" id="sign_username"/>
-    <input type="password" placeholder="Password" class="input" id="sign_password"/>
-    <input type="password" placeholder="Confirm password" class="input" id="sign_confirm_password"/>
-    <input type="submit" value="Sign up" class="input input--submit" />
+    <div class="fullscreen-bg"></div>
 
-    <label for="toggle--login" class="text text--small text--centered">Not new? <b>Log in</b></label>
-</form>
-
-<div class="legal">
-    <a class="text text--small text--border-right" href="javascript:;">Terms</a>
-    <a class="text text--small text--border-right" href="javascript:;">Privacy</a>
-    <a class="text text--small" href="javascript:;">Password help</a>
 </div>
-
-<div class="photo-cred">
-    <a class="text text--small" title="Check out their blog." href="http://cabinporn.com/post/125371354365/the-cabin-book-book-in-the-wild-21-in-the-us" target="_blank">Photo posted by <b>cabinporn</b></a>
-</div>
-
-<div class="fullscreen-bg"></div>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign In</title>
-
-    &lt;!&ndash;Google meta-data&ndash;&gt;
-    <meta name="google-signin-client_id" content="49028948097-abc28eprft8ricne642tpb3793mt3hj7.apps.googleusercontent.com">
-
-    &lt;!&ndash;Google Sign In&ndash;&gt;
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/facebookAndGoogle.css">
-
-    <script type="text/javascript" src="js/signController.js"></script>
-    <script type="text/javascript" src="js/googleLogin.js"></script>
-    <script type="text/javascript" src="js/facebookLogin.js"></script>
-
-</head>
-<body>
-
-<div class="bg" ng-controller="signInController">
-
-    <div class="login">
-        <form>
-            <input type="text" class="username" placeholder="Username"/>
-            <input type="password" class="password" placeholder="Password"/>
-            <input type="submit" value="Sign In" class="button" alt=""/></br>
-            <label>
-                <input type="checkbox" value="Remember me" class="checkbox"/> <span>Remember me</span>
-            </label>
-
-            &lt;!&ndash;Sign in with Google/Facebook&ndash;&gt;
-
-            <div class="sign-in" ng-show="!home.authenticated">
-
-                <div>
-                    <button class="btn-login btn-facebook">
-                        <span class="btn-login-logo">f</span>
-                        <a class="btn-text" href="/login/facebook">Login with Facebook</a>
-                    </button>
-                </div>
-
-                <div>
-                    <button class="btn-login btn-google">
-                        <span class="btn-login-logo">f</span>
-                        <a class="btn-text" href="/login/google">Login with Google</a>
-                    </button>
-                </div>
-            </div>
-
-           &lt;!&ndash; <div class="sign-in" ng-show="home.authenticated">
-                Logged in as : <span ng-bind="home.user"></span>
-                <br/>
-                <button ng-click="home.logout()" class="btn btn-primary">Logout</button>
-            </div>&ndash;&gt;
-
-        </form>
-    </div>
-</div>
-</body>
-</html>-->
