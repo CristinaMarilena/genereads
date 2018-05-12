@@ -76,13 +76,19 @@ app.controller("signController", function ($http, $location, $scope, AccountServ
 
             $scope.loginAccount = function () {
                 $scope.loggedAccount.$save(function () {
-                    console.log("Account logged in successfully"); // on success go back to home i.e. account state.
+                    console.log("Account logged in successfully");
+                    window.location.href = "/";
+                    // on success go back to home i.e. account state.
                 });
             };
 
             $scope.loginAccount();
         });
+
+
     }
+
+
 });
 
 
