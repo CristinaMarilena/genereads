@@ -10,6 +10,20 @@
 
   <description>Demo project for Spring Boot</description>
 
+  <repositories>
+    <repository>
+      <id>Maven Repo</id>
+      <name>Maven Repo</name>
+      <url>http://maven.apache.org</url>
+    </repository>
+    <repository>
+      <id>Google Api Repo</id>
+      <name>Google Api Repo</name>
+      <url>http://code.google.com/p/google-api-java-client/</url>
+    </repository>
+  </repositories>
+
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -21,6 +35,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
+    <project.http.version>1.23.0</project.http.version>
   </properties>
 
   <dependencies>
@@ -142,17 +157,20 @@
       <artifactId>spring-orm</artifactId>
       <version>4.3.14.RELEASE</version>
     </dependency>
-<!--
 
-    &lt;!&ndash; Spring Context &ndash;&gt;
+    <!--Google Books API-->
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>4.3.7.RELEASE</version>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-books</artifactId>
+      <version>v1-rev93-1.23.0</version>
     </dependency>
--->
-
+    <dependency>
+      <groupId>com.google.http-client</groupId>
+      <artifactId>google-http-client-jackson2</artifactId>
+      <version>${project.http.version}</version>
+    </dependency>
   </dependencies>
+
 
   <build>
     <plugins>
