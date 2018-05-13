@@ -1,14 +1,13 @@
 package com.example.service;
 
+import com.example.dao.AccountDAO;
 import com.example.model.Account;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import com.example.dao.AccountDAO;
 
 @Service
 @Transactional
