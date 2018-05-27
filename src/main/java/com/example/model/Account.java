@@ -1,13 +1,10 @@
 package com.example.model;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.sql.Blob;
-import java.util.Collection;
 import java.util.Date;
 
 @Entity

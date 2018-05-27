@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface AccountDAO {
 
-    public void addAccount(Account Account);
+    public void addAccount(Account account);
 
-    public void updateAccount(Account Account);
+    public void updateAccount(Account account);
 
     public Account getAccount(int id);
 
