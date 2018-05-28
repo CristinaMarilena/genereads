@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 @Table(name = "book")
 @Proxy(lazy = false)
-public class Book {
+public class Book implements BookInterface{
 
     @Id
     @Column(name = "bookId")
@@ -24,7 +24,10 @@ public class Book {
     private String apiUrl;
 
     @Column(name = "bookImage")
-    private Blob bookImage;
+    private String bookImage;
+
+    @Column(name = "description")
+    private String description;
 
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {
@@ -49,12 +52,21 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String apiUrl, Blob bookImage, Set<Author> authors, Set<BookGenre> genres) {
+    public Book(String title, String apiUrl, String bookImage, String description, Set<Author> authors, Set<BookGenre> genres) {
         this.title = title;
         this.apiUrl = apiUrl;
         this.bookImage = bookImage;
+        this.description = description;
         this.authors = authors;
         this.genres = genres;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Set<BookGenre> getGenres() {
@@ -98,11 +110,11 @@ public class Book {
         this.apiUrl = apiUrl;
     }
 
-    public Blob getBookImage() {
+    public String getBookImage() {
         return bookImage;
     }
 
-    public void setBookImage(Blob bookImage) {
+    public void setBookImage(String bookImage) {
         this.bookImage = bookImage;
     }
 

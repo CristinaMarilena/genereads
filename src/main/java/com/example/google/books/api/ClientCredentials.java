@@ -31,10 +31,10 @@ package com.example.google.books.api;
 public class ClientCredentials {
 
   /** Value of the "API key" shown under "Simple API Access". */
-  static final String API_KEY =
+  public static final String API_KEY =
       "AIzaSyDX9Mz5_03YV1CL1SOha2D3vqOnSTzwKns";
 
-  static void errorIfNotSpecified() {
+  public static void errorIfNotSpecified() {
     if (API_KEY.startsWith("Enter ")) {
       System.err.println(API_KEY);
       System.exit(1);

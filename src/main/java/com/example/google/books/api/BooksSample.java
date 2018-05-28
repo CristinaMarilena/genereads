@@ -14,18 +14,20 @@
 
 package com.example.google.books.api;
 
+import com.example.model.Author;
+import com.example.model.Book;
+import com.example.model.BookInterface;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.books.Books;
 import com.google.api.services.books.Books.Volumes.List;
 import com.google.api.services.books.BooksRequestInitializer;
 import com.google.api.services.books.model.Volume;
 import com.google.api.services.books.model.Volumes;
 
-import java.io.IOException;
 import java.net.URLEncoder;
 import java.text.NumberFormat;
+import java.util.LinkedList;
 
 /**
  * A sample application that demonstrates how Google Books Client Library for
@@ -48,8 +50,10 @@ public class BooksSample {
   private static final NumberFormat CURRENCY_FORMATTER = NumberFormat.getCurrencyInstance();
   private static final NumberFormat PERCENT_FORMATTER = NumberFormat.getPercentInstance();
 
-  private static void queryGoogleBooks(JsonFactory jsonFactory, String query) throws Exception {
+  protected static java.util.List<BookInterface> queryGoogleBooks(JsonFactory jsonFactory, String query) throws Exception {
     ClientCredentials.errorIfNotSpecified();
+
+    java.util.List<BookInterface> bookList = new LinkedList<>();
     
     // Set up Books client.
     final Books books = new Books.Builder(GoogleNetHttpTransport.newTrustedTransport(), jsonFactory, null)
@@ -65,19 +69,22 @@ public class BooksSample {
     Volumes volumes = volumesList.execute();
     if (volumes.getTotalItems() == 0 || volumes.getItems() == null) {
       System.out.println("No matches found.");
-      return;
+      return null;
     }
 
     // Output results.
     for (Volume volume : volumes.getItems()) {
+      Book book = new Book();
       Volume.VolumeInfo volumeInfo = volume.getVolumeInfo();
       String imageLinks = volume.getVolumeInfo().getImageLinks().getThumbnail();
+      book.setBookImage(imageLinks);
       System.out.println(imageLinks);
 
       Volume.SaleInfo saleInfo = volume.getSaleInfo();
       System.out.println("==========");
       // Title.
       System.out.println("Title: " + volumeInfo.getTitle());
+      book.setTitle(volumeInfo.getTitle());
       // Author(s).
       java.util.List<String> authors = volumeInfo.getAuthors();
       if (authors != null && !authors.isEmpty()) {
@@ -90,6 +97,7 @@ public class BooksSample {
         }
         System.out.println();
       }
+
       // Description (if any).
       if (volumeInfo.getDescription() != null && volumeInfo.getDescription().length() > 0) {
         System.out.println("Description: " + volumeInfo.getDescription());
@@ -135,52 +143,7 @@ public class BooksSample {
     System.out.println(
         volumes.getTotalItems() + " total results at http://books.google.com/ebooks?q="
         + URLEncoder.encode(query, "UTF-8"));
-  }
 
-  public static void main(String[] args) {
-    JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-    try {
-      // Verify command line parameters.
-
-      String[] myQuery = new String[2];
-      myQuery[0] = "--isbn";
-      myQuery[1] = "1772469831";
-
-      if (myQuery.length == 0) {
-        System.err.println("Usage: BooksSample [--author|--isbn|--title] \"<query>\"");
-        System.exit(1);
-      }
-      // Parse command line parameters into a query.
-      // Query format: "[<author|isbn|intitle>:]<query>"
-      String prefix = null;
-      String query = "";
-      for (String it : myQuery) {
-        if ("--author".equals(it)) {
-          prefix = "inauthor:";
-        } else if ("--isbn".equals(it)) {
-          prefix = "isbn:";
-        } else if ("--title".equals(it)) {
-          prefix = "intitle:";
-        } else if (it.startsWith("--")) {
-          System.err.println("Unknown argument: " + it);
-          System.exit(1);
-        } else {
-          query = it;
-        }
-      }
-      if (prefix != null) {
-        query = prefix + query;
-      }
-      try {
-        queryGoogleBooks(jsonFactory, query);
-        // Success!
-        return;
-      } catch (IOException e) {
-        System.err.println(e.getMessage());
-      }
-    } catch (Throwable t) {
-      t.printStackTrace();
-    }
-    System.exit(0);
+    return bookList;
   }
 }
