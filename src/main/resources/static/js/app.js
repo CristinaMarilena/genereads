@@ -1,4 +1,30 @@
-var app = angular.module('app', ["ngResource"]);
+var app = angular.module('app', ["ngResource", "ui.router"]);
+
+app
+    .config([ '$stateProvider'
+        , '$urlRouterProvider'
+        , function($stateProvider, $urlRouterProvider) {
+
+            $stateProvider
+                .state('home', {
+                    url: '/',
+                    views:{
+                        'auth':{
+                            templateUrl: '/partials?name=auth',
+                            controller: 'signController'
+                        },
+                        'menu':{
+                            templateUrl: '/partials?name=menu',
+                            controller: 'signController'
+                        }
+                    }
+                });
+            $urlRouterProvider.otherwise('/');
+
+        }
+    ]);
+
+
 
 app
     .factory("AccountService", function ($resource) {
@@ -18,13 +44,13 @@ app
                 this.user = user
             }
 
-            function getUSer() {
+            function getUser() {
                 return this.user;
             }
 
             return {
                 setUser: setUser,
-                getUser: getUSer
+                getUser: getUser
             };
 
         })();

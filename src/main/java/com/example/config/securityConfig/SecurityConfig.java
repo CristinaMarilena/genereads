@@ -111,7 +111,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatcher("/**")
                 .authorizeRequests()
                 .antMatchers("/","/parser**","/gallery**", "/mylibrary**", "/sign**","/login**", "/webjars/**", "/css/**", "/js/**", "/img/**","/accounts**", "/api/v1/**",
-                        "/login/v1**")
+                        "/login/v1**","/partials/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
