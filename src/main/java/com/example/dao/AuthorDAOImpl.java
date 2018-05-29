@@ -44,4 +44,10 @@ public class AuthorDAOImpl implements AuthorDAO {
         return getCurrentSession().createQuery("from Author").list();
     }
 
+    public Author findByName(String name){
+        List<Author> authors = getCurrentSession().createQuery("from Author where name=:Name").setParameter("Name", name).list();
+        if(!authors.isEmpty())
+            return authors.get(0);
+        else return null;
+    }
 }

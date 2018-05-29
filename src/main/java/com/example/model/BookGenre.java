@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "book_genre")
+@Table(name = "bookgenre")
 @Proxy(lazy = false)
 public class BookGenre {
 

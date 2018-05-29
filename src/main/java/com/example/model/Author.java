@@ -1,6 +1,8 @@
 package com.example.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -14,6 +16,7 @@ public class Author {
     @Id
     @Column(name = "authorId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private int authorId;
 
     @Column
@@ -25,6 +28,7 @@ public class Author {
                     CascadeType.MERGE
             },
             mappedBy = "authors")
+    @JsonManagedReference
     private Set<Book> books;
 
 
@@ -57,14 +61,5 @@ public class Author {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Author{" +
-                "authorId=" + authorId +
-                ", name='" + name + '\'' +
-                ", books=" + books +
-                '}';
     }
 }

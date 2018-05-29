@@ -19,16 +19,10 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-responsive.css">
-    <link rel="stylesheet" href="css/prettyPhoto.css" />
-    <link rel="stylesheet" href="css/flexslider.css" />
     <link rel="stylesheet" href="css/custom-styles.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/search.css">
     <link href="partials/auth.html"/>
-
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <link rel="stylesheet" href="css/style-ie.css"/>
-    <![endif]-->
 
     <!-- Favicons
     ================================================== -->
@@ -55,9 +49,11 @@
 
     <script src="js/app.js"></script>
     <script src="js/home.controller.js"></script>
+    <script src="js/searchController.js"></script>
+    <script src="js/signController.js"></script>
 </head>
 
-<body class="home" >
+<body class="home">
 <!-- Color Bars (above header)-->
 <div class="color-bar-1"></div>
 <div class="color-bar-2 color-bg"></div>
@@ -78,39 +74,15 @@
         <br/>
         <br/>
         <div ui-view="menu"></div>
+        <div class="search-position">
+            <div ui-view="search"></div>
+        </div>
 
 
     </div><!-- End Header -->
 
     <br/>
     <br/>
-
-    <div class="row headline"><!-- Begin Headline -->
-
-        <!-- Slider Carousel
-       ================================================== -->
-        <div class="span8">
-            <div class="flexslider">
-                <ul class="slides">
-                    <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                    <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                    <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                    <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                    <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Headline Text
-        ================================================== -->
-        <div class="span4">
-            <h3>Welcome to Piccolo. <br />
-                A Big Theme in a Small Package.</h3>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pretium vulputate magna sit amet blandit.</p>
-            <p>Cras rutrum, massa non blandit convallis, est lacus gravida enim, eu fermentum ligula orci et tortor. In sit amet nisl ac leo pulvinar molestie. Morbi blandit ultricies ultrices.</p>
-            <a href="#"><i class="icon-plus-sign"></i>Read More</a>
-        </div>
-    </div><!-- End Headline -->
 
     <div class="row gallery-row"><!-- Begin Gallery Row -->
 

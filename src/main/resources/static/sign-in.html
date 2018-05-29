@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
 <head>
-    <meta charset="UTF-8">
-    <title>Sign In</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="google-signin-client_id"
+          content="49028948097-abc28eprft8ricne642tpb3793mt3hj7.apps.googleusercontent.com">
+    <title>GeneReads</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--Google meta-data-->
     <meta name="google-signin-client_id"
@@ -11,78 +14,37 @@
     <!--Google Sign In-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+    <!-- CSS
+    ================================================== -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.css">
     <link rel="stylesheet" href="css/signup.css">
-    <link rel="stylesheet" href="css/facebookAndGoogle.css">
+    <link href="partials/auth.html"/>
 
     <!-- Angular js
-================================================== -->
+    ================================================== -->
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.js"></script>
 
     <!-- JS
-    ================================================== -->
+  ================================================== -->
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/jquery.flexslider.js"></script>
     <script src="js/jquery.custom.js"></script>
 
     <script src="js/bootstrap.js"></script>
 
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/signController.js"></script>
-    <script type="text/javascript" src="js/googleLogin.js"></script>
-    <script type="text/javascript" src="js/facebookLogin.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/signController.js"></script>
 
 </head>
-<body>
-<div ng-app="app" ng-controller="signController">
-    <input type="radio" id="toggle--signup" name="toggle" class="ghost"/>
-    <input type="radio" checked id="toggle--login" name="toggle" class="ghost"/>
-
-    <img class="logo framed" src="img/title_logo_white.png" alt="GeneReads logo"/>
-
-
-    <form id="sign-up-form" class="form form--signup framed">
-        <h2 class="text text--centered text--omega">Join the other <b>152.6 thousand</b> people and</br>share all the
-            books that you love.</h2>
-
-        <input type="email" placeholder="Email" class="input input--top" ng-model="account.email"/>
-        <input type="text" placeholder="Username" class="input" ng-model="account.username"/>
-        <input type="password" placeholder="Password" class="input" ng-model="account.password"/>
-        <input type="password" placeholder="Confirm Password" class="input" ng-model="confirmPassword"/>
-        <input type="submit" value="Sign up" class="input input--submit"/>
-        <label class="text--centered text--notmatch" ng-if="invalid">Passwords do not match!</label>
-
-        <label for="toggle--login" class="text text--small text--centered">Not new? <b>Log in</b></label>
-    </form>
-
-    <form id="login-form" class="form form--login framed">
-        <input type="email" placeholder="Email" class="input input--top" ng-model="account.email"/>
-        <input type="password" placeholder="Password" class="input" ng-model="account.password"/>
-        <input type="submit" value="Login" class="input input--submit"/>
-        <label class="text--centered text--notmatch" ng-if="invalid">Passwords do not match!</label>
-
-        <label for="toggle--signup" class="text text--small text--centered">New? <b>Sign up</b></label>
-    </form>
-
-    <div class="legal">
-        <a class="text text--small text--border-right" href="javascript:;">Terms</a>
-        <a class="text text--small text--border-right" href="javascript:;">Privacy</a>
-        <a class="text text--small" href="javascript:;">Password help</a>
-    </div>
-
-    <div class="photo-cred">
-        <a class="text text--small" title="Check out their blog."
-           href="http://cabinporn.com/post/125371354365/the-cabin-book-book-in-the-wild-21-in-the-us" target="_blank">Photo
-            posted by <b>cabinporn</b></a>
-    </div>
-
-    <div class="fullscreen-bg"></div>
-
-</div>
+<body  ui-view="signin">
 </body>
 </html>

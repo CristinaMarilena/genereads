@@ -41,7 +41,14 @@ public class BookGenreDAOImpl implements BookGenreDAO {
     }
 
     public List<BookGenre> getBookGenres() {
-        return getCurrentSession().createQuery("from BookGenre").list();
+        return getCurrentSession().createQuery("from Bookgenre").list();
     }
 
+    @Override
+    public BookGenre getGenreByName(String genreName) {
+        List<BookGenre> genres = getCurrentSession().createQuery("from Bookgenre where genrename=:GenreName").setParameter("GenreName", genreName).list();
+        if(!genres.isEmpty())
+            return genres.get(0);
+        else return null;
+    }
 }

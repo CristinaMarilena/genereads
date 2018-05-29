@@ -47,4 +47,11 @@ public class BookDAOImpl implements BookDAO {
         return getCurrentSession().createQuery("from Book").list();
     }
 
+    @Override
+    public Book findByUrl(String url) {
+        List<Book> bookList = getCurrentSession().createQuery("from Book where apiurl=:Apiurl").setParameter("Apiurl", url).list();
+       if(!bookList.isEmpty())
+        return bookList.get(0);
+       else return null;
+    }
 }

@@ -15,4 +15,6 @@ public interface BookService {
     public void deleteBook(int id);
 
     public List<Book> getBooks();
+
+    public Book getBookByUrl(String url);
 }

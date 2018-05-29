@@ -1,4 +1,4 @@
-app.controller("signController", function ($http, $location, $scope, AccountService, AccountEmailService,
+app.controller("SignController", function ($http, $location, $scope, AccountService, AccountEmailService,
                                            LoginService, UserService) {
 
 

@@ -35,4 +35,9 @@ public class BookGenreServiceImpl implements BookGenreService {
     public List<BookGenre> getBookGenres() {
         return bookGenreDAO.getBookGenres();
     }
+
+    @Override
+    public BookGenre getGenreByName(String genreName) {
+        return bookGenreDAO.getGenreByName(genreName);
+    }
 }

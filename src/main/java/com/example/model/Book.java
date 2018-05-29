@@ -1,6 +1,8 @@
 package com.example.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -15,6 +17,7 @@ public class Book implements BookInterface{
     @Id
     @Column(name = "bookId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private int bookId;
 
     @Column(name = "title")
@@ -37,6 +40,7 @@ public class Book implements BookInterface{
     @JoinTable(name = "books_authors",
             joinColumns = { @JoinColumn(name = "bookId") },
             inverseJoinColumns = { @JoinColumn(name = "authorId") })
+    @JsonBackReference
     private Set<Author> authors;
 
     @ManyToMany(fetch = FetchType.EAGER,
@@ -66,6 +70,8 @@ public class Book implements BookInterface{
     }
 
     public void setDescription(String description) {
+
+        if(description.length()<3000)
         this.description = description;
     }
 
@@ -116,16 +122,5 @@ public class Book implements BookInterface{
 
     public void setBookImage(String bookImage) {
         this.bookImage = bookImage;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "bookId=" + bookId +
-                ", title='" + title + '\'' +
-                ", apiUrl='" + apiUrl + '\'' +
-                ", bookImage=" + bookImage +
-                ", authors=" + authors +
-                '}';
     }
 }

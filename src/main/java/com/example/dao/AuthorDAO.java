@@ -16,4 +16,6 @@ public interface AuthorDAO {
 
     public List<Author> getAuthors();
 
+    public Author findByName(String name);
+
 }

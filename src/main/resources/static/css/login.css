@@ -94,14 +94,14 @@ label span {
 
 .button-login{
     position: absolute;
-    right: 100px;
+    right: 120px;
     top: 70px;
     width: 100px;
 }
 
 .button-sign-up{
     position: absolute;
-    right: 200px;
+    right: 220px;
     top: 70px;
 }
 

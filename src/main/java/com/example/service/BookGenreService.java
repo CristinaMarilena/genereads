@@ -15,4 +15,6 @@ public interface BookGenreService {
     public void deleteBookGenre(int id);
 
     public List<BookGenre> getBookGenres();
+
+    public BookGenre getGenreByName(String genreName);
 }

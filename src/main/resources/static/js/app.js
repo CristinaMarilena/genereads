@@ -1,9 +1,8 @@
 var app = angular.module('app', ["ngResource", "ui.router"]);
 
 app
-    .config([ '$stateProvider'
-        , '$urlRouterProvider'
-        , function($stateProvider, $urlRouterProvider) {
+    .config(
+        function($stateProvider, $urlRouterProvider) {
 
             $stateProvider
                 .state('home', {
@@ -11,18 +10,30 @@ app
                     views:{
                         'auth':{
                             templateUrl: '/partials?name=auth',
-                            controller: 'signController'
+                            controller: 'SignController'
                         },
                         'menu':{
                             templateUrl: '/partials?name=menu',
-                            controller: 'signController'
+                            controller: 'HomeController'
+                        },
+                        'search':{
+                            templateUrl: '/partials?name=searchbar',
+                            controller: 'SearchController'
+                        },
+                        'signin':{
+                            templateUrl: '/partials?name=sign-in',
+                            controller: 'SignController'
+                        },
+                        'signup':{
+                            templateUrl: '/partials?name=sign-up',
+                            controller: 'SignController'
                         }
                     }
                 });
             $urlRouterProvider.otherwise('/');
 
         }
-    ]);
+    );
 
 
 

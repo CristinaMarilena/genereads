@@ -15,4 +15,6 @@ public interface BookDAO {
     public void deleteBook(int id);
 
     public List<Book> getBooks();
+
+    public Book findByUrl(String url);
 }

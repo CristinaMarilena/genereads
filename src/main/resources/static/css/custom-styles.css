@@ -62,7 +62,7 @@ blockquote.pull-right {border-right: 5px solid #999;}
 **************************************/
 .logo {
 	margin-top: 50px;
-	margin-left: 60px;
+	margin-left: 40px;
 }
 .logo img { padding-right:20px; }
 .logo h5 { display: inline-block; }
@@ -85,7 +85,7 @@ blockquote.pull-right {border-right: 5px solid #999;}
 	border-bottom: 1px dotted #a9a9a9;
 	border-top: 1px dotted #a9a9a9;
 	top:0px;
-	left: 120px;
+	left: 6%;
 	position: absolute;
 	min-height: 50px;
 	margin-top: 140px;
