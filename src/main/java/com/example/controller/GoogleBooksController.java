@@ -49,7 +49,7 @@ public class GoogleBooksController {
     private static final NumberFormat CURRENCY_FORMATTER = NumberFormat.getCurrencyInstance();
     private static final NumberFormat PERCENT_FORMATTER = NumberFormat.getPercentInstance();
 
-    public List<Book> getBooks(String query){
+    public List<Book> getBooks(String query) {
         ClientCredentials.errorIfNotSpecified();
 
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
@@ -79,58 +79,58 @@ public class GoogleBooksController {
             boolean enoughelements = false;
 
             for (Volume volume : volumes.getItems()) {
-                if(!enoughelements){
-                Book book = new Book();
-                Volume.VolumeInfo volumeInfo = volume.getVolumeInfo();
+                if (!enoughelements) {
+                    Book book = new Book();
+                    Volume.VolumeInfo volumeInfo = volume.getVolumeInfo();
 
-                Book bookToBefound = bookService.getBookByUrl(volume.getSelfLink());
+                    Book bookToBefound = bookService.getBookByUrl(volume.getSelfLink());
 
-                if(bookToBefound == null) {
-                    book.setApiUrl(volume.getSelfLink());
+                    if (bookToBefound == null) {
+                        book.setApiUrl(volume.getSelfLink());
 
-                    if(volume.getVolumeInfo().getImageLinks().getThumbnail()!= null) {
-                        String imageLinks = volume.getVolumeInfo().getImageLinks().getThumbnail();
-                        book.setBookImage(imageLinks);
-                        System.out.println(imageLinks);
-                    }
-
-                    // Title.
-                    System.out.println("Title: " + volumeInfo.getTitle());
-                    book.setTitle(volumeInfo.getTitle());
-
-                    //Authors
-                    Set<Author> bookAuthors = new LinkedHashSet<>();
-                    java.util.List<String> authors = volumeInfo.getAuthors();
-                    if (authors != null && !authors.isEmpty()) {
-                        System.out.print("Author(s): ");
-                        for (int i = 0; i < authors.size(); ++i) {
-                            System.out.print(authors.get(i));
-                            if (i < authors.size() - 1) {
-                                System.out.print(", ");
-                            }
-
-                            Author authorToBeFound = authorService.getAuthorByName(authors.get(i));
-                            if (authorToBeFound == null) {
-
-                                Author author = new Author();
-                                author.setName(authors.get(i));
-
-                                authorService.addAuthor(author);
-                                Author authorToBeAddedToBook = authorService.getAuthorByName(authors.get(i));
-                                bookAuthors.add(authorToBeAddedToBook);
-                            } else {
-                                bookAuthors.add(authorToBeFound);
-                            }
-
+                        if (volume.getVolumeInfo().getImageLinks().getThumbnail() != null) {
+                            String imageLinks = volume.getVolumeInfo().getImageLinks().getThumbnail();
+                            book.setBookImage(imageLinks);
+                            System.out.println(imageLinks);
                         }
-                        System.out.println();
-                    }
 
-                    // Description (if any).
-                    if (volumeInfo.getDescription() != null && volumeInfo.getDescription().length() > 0) {
-                        System.out.println("Description: " + volumeInfo.getDescription());
-                        book.setDescription(volumeInfo.getDescription());
-                    }
+                        // Title.
+                        System.out.println("Title: " + volumeInfo.getTitle());
+                        book.setTitle(volumeInfo.getTitle());
+
+                        //Authors
+                        Set<Author> bookAuthors = new LinkedHashSet<>();
+                        java.util.List<String> authors = volumeInfo.getAuthors();
+                        if (authors != null && !authors.isEmpty()) {
+                            System.out.print("Author(s): ");
+                            for (int i = 0; i < authors.size(); ++i) {
+                                System.out.print(authors.get(i));
+                                if (i < authors.size() - 1) {
+                                    System.out.print(", ");
+                                }
+
+                                Author authorToBeFound = authorService.getAuthorByName(authors.get(i));
+                                if (authorToBeFound == null) {
+
+                                    Author author = new Author();
+                                    author.setName(authors.get(i));
+
+                                    authorService.addAuthor(author);
+                                    Author authorToBeAddedToBook = authorService.getAuthorByName(authors.get(i));
+                                    bookAuthors.add(authorToBeAddedToBook);
+                                } else {
+                                    bookAuthors.add(authorToBeFound);
+                                }
+
+                            }
+                            System.out.println();
+                        }
+
+                        // Description (if any).
+                        if (volumeInfo.getDescription() != null && volumeInfo.getDescription().length() > 0) {
+                            System.out.println("Description: " + volumeInfo.getDescription());
+                            book.setDescription(volumeInfo.getDescription());
+                        }
 
 
                    /* List<String> genres = volumeInfo.getCategories();
@@ -145,15 +145,58 @@ public class GoogleBooksController {
 
                     }*/
 
-                    book.setAuthors(bookAuthors);
-                    bookService.addBook(book);
-                    System.out.println("Book added");
-                    bookList.add(book);
-                    if (bookList.size() > 15) enoughelements = true;
-                }
+                        book.setAuthors(bookAuthors);
+                        bookService.addBook(book);
+                        System.out.println("Book added");
+                        bookList.add(book);
 
+                        if (bookList.size() > 15) enoughelements = true;
+                    } else {
+                        book.setApiUrl(volume.getSelfLink());
+                        System.out.println("Book already exists");
+
+                        if (volume.getVolumeInfo().getImageLinks().getThumbnail() != null) {
+                            String imageLinks = volume.getVolumeInfo().getImageLinks().getThumbnail();
+                            book.setBookImage(imageLinks);
+                            System.out.println(imageLinks);
+                        }
+
+                        // Title.
+                        System.out.println("Title: " + volumeInfo.getTitle());
+                        book.setTitle(volumeInfo.getTitle());
+
+                        //Authors
+                        Set<Author> bookAuthors = new LinkedHashSet<>();
+                        java.util.List<String> authors = volumeInfo.getAuthors();
+                        if (authors != null && !authors.isEmpty()) {
+                            System.out.print("Author(s): ");
+                            for (int i = 0; i < authors.size(); ++i) {
+                                System.out.print(authors.get(i));
+                                if (i < authors.size() - 1) {
+                                    System.out.print(", ");
+                                }
+
+                                Author authorToBeFound = authorService.getAuthorByName(authors.get(i));
+                                bookAuthors.add(authorToBeFound);
+                            }
+                            System.out.println();
+                        }
+
+                        // Description (if any).
+                        if (volumeInfo.getDescription() != null && volumeInfo.getDescription().length() > 0) {
+                            System.out.println("Description: " + volumeInfo.getDescription());
+                            book.setDescription(volumeInfo.getDescription());
+                        }
+
+                        book.setAuthors(bookAuthors);
+                        System.out.println("Book already in the database");
+                        System.out.println(new Date());
+                        bookList.add(book);
+
+                        if (bookList.size() > 12) enoughelements = true;
+
+                    }
                 }
-                else System.out.println("Book already exists");
             }
 
         } catch (GeneralSecurityException e) {
@@ -166,21 +209,21 @@ public class GoogleBooksController {
     }
 
     @RequestMapping(value = "byisbn/{isbn}", method = RequestMethod.GET)
-    public List<Book> getBooksByISBN(@PathVariable String isbn){
+    public List<Book> getBooksByISBN(@PathVariable String isbn) {
         List<Book> bookList = new LinkedList<Book>();
         String query = CreateBookSearchQuery.getSearchQuery("--isbn", isbn);
         return this.getBooks(query);
     }
 
     @RequestMapping(value = "bytitle/{title}", method = RequestMethod.GET)
-    public List<Book> getBooksByTitle(@PathVariable String title){
+    public List<Book> getBooksByTitle(@PathVariable String title) {
         List<Book> bookList = new LinkedList<Book>();
         String query = CreateBookSearchQuery.getSearchQuery("--title", title);
         return this.getBooks(query);
     }
 
     @RequestMapping(value = "byauthor/{author}", method = RequestMethod.GET)
-    public List<Book> getBooksByAuthor(@PathVariable String author){
+    public List<Book> getBooksByAuthor(@PathVariable String author) {
         List<Book> bookList = new LinkedList<Book>();
         String query = CreateBookSearchQuery.getSearchQuery("--author", author);
         return this.getBooks(query);

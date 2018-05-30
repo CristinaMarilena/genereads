@@ -1,17 +1,19 @@
-(function(app){
-app.controller("SearchController", function () {
+app.controller("SearchController", function ($http, $scope, Books, BooksService2) {
+    $scope.booklist = [];
 
     /**
      Remove active class on submit
      **/
-    $('form').submit(function(e) {
+    $('form').submit(function (e) {
         e.preventDefault();
+        window.location.href = "/api/v1/exploreresults";
+
     });
 
     /**
      Show/Hide form inputs
      **/
-    $('.search span').click(function(e) {
+    $('.search span').click(function (e) {
 
         var $parent = $(this).parent();
 
@@ -20,7 +22,7 @@ app.controller("SearchController", function () {
             $parent
                 .addClass('active')
                 .find('input:first')
-                .on('blur', function() {
+                .on('blur', function () {
                         if (!$(this).val().length) $parent.removeClass('active');
                     }
                 );
@@ -28,5 +30,25 @@ app.controller("SearchController", function () {
         }
     });
 
-})
-})(app);
+    debugger;
+
+    $scope.booklist = [];
+
+    // Get a single product
+    $scope.getBook = function() {
+        Books.query({title: 'hate'}, function(data) {
+           console.log(data);
+           $scope.booklist = data;
+            console.log($scope.booklist);
+            BooksService.setBooks($scope.booklist);
+
+            console.log("service books")
+            console.log(BooksService.getBooks());
+        });
+        console.log($scope.booklist);
+    };
+
+    $scope.getBook();
+
+
+});
