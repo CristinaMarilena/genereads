@@ -4,10 +4,9 @@ import com.example.google.books.api.ClientCredentials;
 import com.example.google.books.api.CreateBookSearchQuery;
 import com.example.model.Author;
 import com.example.model.Book;
-import com.example.model.BookGenre;
-import com.example.model.BookInterface;
+import com.example.model.BookCategory;
 import com.example.service.AuthorService;
-import com.example.service.BookGenreService;
+import com.example.service.BookCategoryService;
 import com.example.service.BookService;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -38,7 +37,7 @@ public class GoogleBooksController {
     private BookService bookService;
 
     @Autowired
-    private BookGenreService bookGenreService;
+    private BookCategoryService bookCategoryService;
 
     /**
      * Be sure to specify the name of your application. If the application name is {@code null} or
@@ -133,17 +132,23 @@ public class GoogleBooksController {
                         }
 
 
-                   /* List<String> genres = volumeInfo.getCategories();
-                    for (String it : genres) {
-                        BookGenre genreToBeFound = bookGenreService.getGenreByName(it);
+                        List<String> categories = volumeInfo.getCategories();
+                        Set<BookCategory> bookCategories = new LinkedHashSet<>();
+                        if (categories!= null) {
+                            for (String it : categories) {
+                                BookCategory categoryToBeFound = bookCategoryService.getCategoryByName(it);
 
-                        if(genreToBeFound == null){
-                            BookGenre bookGenre = new BookGenre();
-                            bookGenre.setGenreName(it);
-                            bookGenreService.addBookGenre(bookGenre);
+                                if (categoryToBeFound == null) {
+                                    BookCategory bookCategory = new BookCategory();
+                                    bookCategory.setCategoryName(it);
+                                    bookCategoryService.addBookCategory(bookCategory);
+                                    bookCategories.add(bookCategory);
+                                } else
+                                    bookCategories.add(categoryToBeFound);
+
+                            }
+                            book.setCategories(bookCategories);
                         }
-
-                    }*/
 
                         book.setAuthors(bookAuthors);
                         bookService.addBook(book);
@@ -186,6 +191,18 @@ public class GoogleBooksController {
                         if (volumeInfo.getDescription() != null && volumeInfo.getDescription().length() > 0) {
                             System.out.println("Description: " + volumeInfo.getDescription());
                             book.setDescription(volumeInfo.getDescription());
+                        }
+
+
+                        List<String> categories = volumeInfo.getCategories();
+                        Set<BookCategory> bookCategories = new LinkedHashSet<>();
+                        if (categories != null) {
+                            for (String it : categories) {
+                                BookCategory categoryToBeFound = bookCategoryService.getCategoryByName(it);
+                                bookCategories.add(categoryToBeFound);
+
+                            }
+                            book.setCategories(bookCategories);
                         }
 
                         book.setAuthors(bookAuthors);

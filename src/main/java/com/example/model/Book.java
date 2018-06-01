@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
-import java.sql.Blob;
 import java.util.Set;
 
 @Entity
@@ -48,21 +47,22 @@ public class Book implements BookInterface{
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
-    @JoinTable(name = "books_genres",
+    @JoinTable(name = "books_categories",
             joinColumns = { @JoinColumn(name = "bookId") },
-            inverseJoinColumns = { @JoinColumn(name = "genreId") })
-    private Set<BookGenre> genres;
+            inverseJoinColumns = { @JoinColumn(name = "categoryId") })
+    @JsonBackReference
+    private Set<BookCategory> categories;
 
     public Book() {
     }
 
-    public Book(String title, String apiUrl, String bookImage, String description, Set<Author> authors, Set<BookGenre> genres) {
+    public Book(String title, String apiUrl, String bookImage, String description, Set<Author> authors, Set<BookCategory> categories) {
         this.title = title;
         this.apiUrl = apiUrl;
         this.bookImage = bookImage;
         this.description = description;
         this.authors = authors;
-        this.genres = genres;
+        this.categories = categories;
     }
 
     public String getDescription() {
@@ -75,12 +75,12 @@ public class Book implements BookInterface{
         this.description = description;
     }
 
-    public Set<BookGenre> getGenres() {
-        return genres;
+    public Set<BookCategory> getCategories() {
+        return categories;
     }
 
-    public void setGenres(Set<BookGenre> genres) {
-        this.genres = genres;
+    public void setCategories(Set<BookCategory> categories) {
+        this.categories = categories;
     }
 
     public void setAuthors(Set<Author> authors) {

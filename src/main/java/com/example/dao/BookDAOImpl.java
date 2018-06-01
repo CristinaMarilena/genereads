@@ -28,7 +28,7 @@ public class BookDAOImpl implements BookDAO {
         bookToUpdate.setBookImage(book.getBookImage());
         bookToUpdate.setTitle(book.getTitle());
         bookToUpdate.setAuthors(book.getAuthors());
-        bookToUpdate.setGenres(book.getGenres());
+        bookToUpdate.setCategories(book.getCategories());
         getCurrentSession().update(bookToUpdate);
     }
 
