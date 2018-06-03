@@ -46,4 +46,12 @@ public class ReviewDAOImpl implements ReviewDAO {
         return getCurrentSession().createQuery("from Review").list();
     }
 
+    @Override
+    public List<Review> getReviewsByBook(int bookId) {
+        List<Review> reviews = getCurrentSession().createQuery("from Review where bookid=:Bookid").setParameter("Bookid", bookId).list();
+        if(!reviews.isEmpty())
+            return reviews;
+        else return null;
+    }
+
 }

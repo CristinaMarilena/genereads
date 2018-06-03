@@ -15,4 +15,6 @@ public interface ReviewService {
     public void deleteReview(int id);
 
     public List<Review> getReviews();
+
+    public List<Review> getReviewsByBook(int bookId);
 }

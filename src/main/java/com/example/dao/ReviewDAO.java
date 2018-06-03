@@ -16,4 +16,6 @@ public interface ReviewDAO {
 
     public List<Review> getReviews();
 
+    public List<Review> getReviewsByBook(int bookId);
+
 }
