@@ -15,12 +15,12 @@ public class RecentlyViewedServiceImpl implements RecentlyViewedService {
     @Autowired
     private RecentlyViewedDAO recentlyViewedDAO;
 
-    public void addRecentlyViewed(RecentlyViewed recentlyViewed) {
-        recentlyViewedDAO.addRecentlyViewed(recentlyViewed);
+    public void addRecentlyViewed(RecentlyViewed recentlyViewed, int userId) {
+        recentlyViewedDAO.addRecentlyViewed(recentlyViewed, userId);
     }
 
-    public void updateRecentlyViewed(RecentlyViewed RecentlyViewed) {
-        recentlyViewedDAO.updateRecentlyViewed(RecentlyViewed);
+    public void updateRecentlyViewed(RecentlyViewed RecentlyViewed, int userId) {
+        recentlyViewedDAO.updateRecentlyViewed(RecentlyViewed, userId);
     }
 
     public RecentlyViewed getRecentlyViewed(int id) {
@@ -38,5 +38,9 @@ public class RecentlyViewedServiceImpl implements RecentlyViewedService {
 
     public List<RecentlyViewed> getRecentlyViewedByUser(int userId) {
         return recentlyViewedDAO.getRecentlyViewedByUser(userId);
+    }
+
+    public RecentlyViewed getRecentlyViewedByUserAndBook(int userId, int bookId) {
+        return recentlyViewedDAO.getRecentlyViewedByUserAndBook(userId, bookId);
     }
 }

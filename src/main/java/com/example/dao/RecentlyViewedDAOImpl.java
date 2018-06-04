@@ -18,14 +18,24 @@ public class RecentlyViewedDAOImpl implements RecentlyViewedDAO {
         return sessionFactory.getCurrentSession();
     }
 
-    public void addRecentlyViewed(RecentlyViewed recentlyViewed) {
+    public void addRecentlyViewed(RecentlyViewed recentlyViewed, int userId) {
+        List<RecentlyViewed> recentlyViewedlist = getRecentlyViewedByUser(userId);
+        if(!recentlyViewedlist.isEmpty()) {
+            RecentlyViewed firstRecentlyViewed = recentlyViewedlist.get(0);
+            deleteRecentlyViewed(firstRecentlyViewed.getRecentlyViewedId());
+        }
         getCurrentSession().save(recentlyViewed);
     }
 
-    public void updateRecentlyViewed(RecentlyViewed recentlyViewed) {
+    public void updateRecentlyViewed(RecentlyViewed recentlyViewed, int userId) {
         RecentlyViewed recentlyViewedToUpdate = getRecentlyViewed(recentlyViewed.getRecentlyViewedId());
         recentlyViewedToUpdate.setBookId(recentlyViewed.getBookId());
         recentlyViewedToUpdate.setUserId(recentlyViewed.getUserId());
+        List<RecentlyViewed> recentlyViewedlist = getRecentlyViewedByUser(userId);
+        if(!recentlyViewedlist.isEmpty()) {
+            RecentlyViewed firstRecentlyViewed = recentlyViewedlist.get(0);
+            deleteRecentlyViewed(firstRecentlyViewed.getRecentlyViewedId());
+        }
         getCurrentSession().update(recentlyViewedToUpdate);
     }
 
@@ -44,11 +54,25 @@ public class RecentlyViewedDAOImpl implements RecentlyViewedDAO {
         return getCurrentSession().createQuery("from RecentlyViewedService").list();
     }
 
+
     @Override
     public List<RecentlyViewed> getRecentlyViewedByUser(int userid) {
-        List<RecentlyViewed> recentlyViewed = getCurrentSession().createQuery("from RecentlyViewedService where userId=:UserId").setParameter("UserId", userid).list();
+        List<RecentlyViewed> recentlyViewed = getCurrentSession().createQuery("from RecentlyViewedService where userId=:UserId order by recentlyViewedId DESC")
+                .setParameter("UserId", userid)
+                .list();
         if(!recentlyViewed.isEmpty())
             return recentlyViewed;
+        else return null;
+    }
+
+    @Override
+    public RecentlyViewed getRecentlyViewedByUserAndBook(int userid, int bookId) {
+        List<RecentlyViewed> recentlyViewed = getCurrentSession().createQuery("from RecentlyViewedService where userId=:UserId and bookId=:BookId")
+                .setParameter("UserId", userid)
+                .setParameter("BookId", bookId)
+                .list();
+        if(!recentlyViewed.isEmpty())
+            return recentlyViewed.get(0);
         else return null;
     }
 

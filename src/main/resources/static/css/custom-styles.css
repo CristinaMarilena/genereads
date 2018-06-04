@@ -236,7 +236,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{ display: block; }
 		text-overflow:    ellipsis;
 		overflow:hidden;
 		white-space:nowrap;
-		width: 200px;
+		width: 150px;
 	}
 	li.span2 .project-details {
 		-o-text-overflow: ellipsis;
@@ -313,7 +313,9 @@ ul.nav li.dropdown:hover ul.dropdown-menu{ display: block; }
 	font-weight: normal;
 	text-transform:uppercase;
 }
-.project-details {color: #6f6f6f;}
+.project-details {
+	color: #6f6f6f;
+	width: 200px;}
 .project-details a {color: #333333;}
 .project-details a:hover {color:#d8450b; text-decoration: none;}
 

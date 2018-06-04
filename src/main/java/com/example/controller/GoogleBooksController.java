@@ -115,11 +115,12 @@ public class GoogleBooksController {
             if (!enoughelements) {
                 Book book = new Book();
                 Volume.VolumeInfo volumeInfo = volume.getVolumeInfo();
+                String urlId = volume.getSelfLink().substring(volume.getSelfLink().indexOf("/volumes") + 9);
 
-                Book bookToBefound = bookService.getBookByUrl(volume.getSelfLink());
+                Book bookToBefound = bookService.getBookByUrl(urlId);
 
                 if (bookToBefound == null) {
-                    book.setApiUrl(volume.getSelfLink());
+                    book.setApiUrl(urlId);
 
                     if(volume.getVolumeInfo().getImageLinks()!= null) {
                         if (volume.getVolumeInfo().getImageLinks().getThumbnail() != null) {
@@ -193,7 +194,7 @@ public class GoogleBooksController {
 
                     if (bookList.size() > 15) enoughelements = true;
                 } else {
-                    book.setApiUrl(volume.getSelfLink());
+                    book.setApiUrl(urlId);
                     System.out.println("Book already exists");
 
                     if(volume.getVolumeInfo().getImageLinks()!= null) {
@@ -248,7 +249,7 @@ public class GoogleBooksController {
                     System.out.println(new Date());
                     bookList.add(book);
 
-                    if (bookList.size() > 12) enoughelements = true;
+                    if (bookList.size() > 15) enoughelements = true;
 
                 }
             }

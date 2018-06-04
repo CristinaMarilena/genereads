@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.Book;
+import com.example.service.BookAuthorService;
 import com.example.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,9 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private BookAuthorService bookAuthorService;
 
     @RequestMapping(value = "books", method = RequestMethod.GET)
     public List<Book> list() {
@@ -58,4 +62,13 @@ public class BookController {
         return existingBook;
     }
 
+    @RequestMapping(value = "books/byurl/{apiurlid}/**", method = RequestMethod.GET)
+    public Book getByUrl(@PathVariable String apiurlid){
+        return bookService.getBookByUrl(apiurlid);
+    }
+
+    @RequestMapping(value = "books/author/byurl/{apiurlid}", method = RequestMethod.GET)
+    public List<String> getAuthorByBookUrl(@PathVariable String apiurlid){
+       return bookAuthorService.getAuthorByBook(apiurlid);
+    }
 }

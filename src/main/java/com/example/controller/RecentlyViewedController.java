@@ -22,23 +22,23 @@ public class RecentlyViewedController {
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping(value = "toread", method = RequestMethod.GET)
+    @RequestMapping(value = "recentlyviewed", method = RequestMethod.GET)
     public List<RecentlyViewed> list() {
         return recentlyViewedService.getRecentlyViewed();
     }
 
-    @RequestMapping(value = "toread", method = RequestMethod.POST)
+    @RequestMapping(value = "recentlyviewed", method = RequestMethod.POST)
     public RecentlyViewed create(@RequestBody RecentlyViewed recentlyViewed) {
-        recentlyViewedService.addRecentlyViewed(recentlyViewed);
+        recentlyViewedService.addRecentlyViewed(recentlyViewed, accountService.findByEmail(securityService.findLoggedInUsername()).getUserId());
         return recentlyViewed;
     }
 
-    @RequestMapping(value = "toread/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "recentlyviewed/{id}", method = RequestMethod.GET)
     public RecentlyViewed get(@PathVariable int id) {
         return recentlyViewedService.getRecentlyViewed(id);
     }
 
-    @RequestMapping(value = "toread/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "recentlyviewed/{id}", method = RequestMethod.PUT)
     public RecentlyViewed update(@PathVariable int id, @RequestBody RecentlyViewed recentlyViewed) {
         RecentlyViewed existingRecentlyViewed = recentlyViewedService.getRecentlyViewed(id);
         if(recentlyViewed.getBookId() != 0){
@@ -48,24 +48,24 @@ public class RecentlyViewedController {
             existingRecentlyViewed.setUserId(recentlyViewed.getUserId());
         }
 
-        recentlyViewedService.updateRecentlyViewed(existingRecentlyViewed);
+        recentlyViewedService.updateRecentlyViewed(existingRecentlyViewed, accountService.findByEmail(securityService.findLoggedInUsername()).getUserId());
         return recentlyViewed;
     }
 
-    @RequestMapping(value = "toread/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "recentlyviewed/{id}", method = RequestMethod.DELETE)
     public RecentlyViewed delete(@PathVariable int id) {
         RecentlyViewed existingRecentlyViewed = recentlyViewedService.getRecentlyViewed(id);
         recentlyViewedService.deleteRecentlyViewed(id);
         return existingRecentlyViewed;
     }
 
-    @RequestMapping(value = "toread/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "recentlyviewed/byuser/{userId}", method = RequestMethod.GET)
     public List<RecentlyViewed> getRecentlyViewedByUser(@PathVariable int userId){
         List<RecentlyViewed> recentlyViewedList = recentlyViewedService.getRecentlyViewedByUser(userId);
         return recentlyViewedList;
     }
 
-    @RequestMapping(value = "toread/own", method = RequestMethod.GET)
+    @RequestMapping(value = "recentlyviewed/own", method = RequestMethod.GET)
     public List<RecentlyViewed> getRecentlyViewedByCurrentUser(){
         List<RecentlyViewed> recentlyViewedList = recentlyViewedService.getRecentlyViewedByUser(accountService.findByEmail(securityService.findLoggedInUsername()).getUserId());
         return recentlyViewedList;

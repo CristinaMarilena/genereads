@@ -2,11 +2,9 @@ package com.example.controller;
 
 import com.example.model.Account;
 import com.example.model.Book;
+import com.example.model.RecentlyViewed;
 import com.example.model.Review;
-import com.example.service.AccountService;
-import com.example.service.BookService;
-import com.example.service.ReviewService;
-import com.example.service.SecurityService;
+import com.example.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,25 +29,42 @@ public class UserReviewController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(value = "reviews/addrating/{rating}/bookapiurl/{apiurl}", method = RequestMethod.POST)
-    public Review addRating(@PathVariable int rating, String apiurl) {
-        Account user = accountService.findByEmail(securityService.findLoggedInUsername());
+    @Autowired
+    private RecentlyViewedService recentlyViewedService;
+
+    @RequestMapping(value = "reviews/addrating/{rating}/bookId/{bookId}", method = RequestMethod.POST)
+    public Review addRating(@PathVariable int rating, @PathVariable int bookId) {
+        Account user = accountService.findByEmail("crist@tradeshift.com");
         Review review = new Review();
         review.setUserId(user.getUserId());
         review.setRating(rating);
-        review.setBookId(bookService.getBookByUrl(apiurl).getBookId());
+
+        review.setBookId(bookId);
         reviewService.addReview(review);
+
+        RecentlyViewed recentlyViewed = new RecentlyViewed();
+        recentlyViewed.setBookId(bookId);
+        recentlyViewed.setUserId(user.getUserId());
+        recentlyViewedService.addRecentlyViewed(recentlyViewed, user.getUserId());
+
         return review;
     }
 
-    @RequestMapping(value = "reviews/addreview/{review}/bookapiurl/{apiurl}", method = RequestMethod.POST)
-    public Review addReview(@PathVariable String reviewText, String apiurl) {
-        Account user = accountService.findByEmail(securityService.findLoggedInUsername());
+    @RequestMapping(value = "reviews/addreview/{review}/bookId{bookId}", method = RequestMethod.POST)
+    public Review addReview(@PathVariable String reviewText, @PathVariable int bookId) {
+        Account user = accountService.findByEmail("crist@tradeshift.com");
         Review review = new Review();
         review.setUserId(user.getUserId());
         review.setReview(reviewText);
-        review.setBookId(bookService.getBookByUrl(apiurl).getBookId());
+
+        review.setBookId(bookId);
         reviewService.addReview(review);
+
+        RecentlyViewed recentlyViewed = new RecentlyViewed();
+        recentlyViewed.setBookId(bookId);
+        recentlyViewed.setUserId(user.getUserId());
+        recentlyViewedService.addRecentlyViewed(recentlyViewed, user.getUserId());
+
         return review;
     }
 
@@ -57,10 +72,13 @@ public class UserReviewController {
     public Review updateReview(@PathVariable int reviewId, String reviewText) {
         Review existingReview = reviewService.getReview(reviewId);
 
-        if(reviewText != null){
+        if (reviewText != null) {
             existingReview.setReview(reviewText);
         }
         reviewService.updateReview(existingReview);
+        RecentlyViewed recentlyViewed = recentlyViewedService.getRecentlyViewedByUserAndBook(existingReview.getUserId(), existingReview.getBookId());
+        recentlyViewedService.updateRecentlyViewed(recentlyViewed, recentlyViewed.getUserId());
+
         return existingReview;
     }
 
@@ -69,10 +87,14 @@ public class UserReviewController {
     public Review updateRating(@PathVariable int reviewId, int rating) {
         Review existingReview = reviewService.getReview(reviewId);
 
-        if(rating > -1 && rating < 11){
+        if (rating > -1 && rating < 11) {
             existingReview.setRating(rating);
         }
         reviewService.updateReview(existingReview);
+
+        RecentlyViewed recentlyViewed = recentlyViewedService.getRecentlyViewedByUserAndBook(existingReview.getUserId(), existingReview.getBookId());
+        recentlyViewedService.updateRecentlyViewed(recentlyViewed, recentlyViewed.getUserId());
+
         return existingReview;
     }
 
@@ -84,29 +106,29 @@ public class UserReviewController {
         return existingReview;
     }
 
-    @RequestMapping(value = "reviews/deleterating{reviewId}", method = RequestMethod.POST)
+    @RequestMapping(value = "reviews/deletereview{reviewId}", method = RequestMethod.POST)
     public Review deleteReview(@PathVariable int reviewId) {
         Review existingReview = reviewService.getReview(reviewId);
         reviewService.deleteReview(reviewId);
         return existingReview;
     }
 
-    @RequestMapping(value = "reviews/allreviews/{apiurl}", method = RequestMethod.GET)
-    public List<Review> getAllReviewsOfABook(@PathVariable String apiurl) {
-        Book book = bookService.getBookByUrl(apiurl);
-        List<Review> reviews= reviewService.getReviewsByBook(book.getBookId());
+    @RequestMapping(value = "reviews/allreviews/{bookId}", method = RequestMethod.GET)
+    public List<Review> getAllReviewsOfABook(@PathVariable int bookId) {
+        Book book = bookService.getBook(bookId);
+        List<Review> reviews = reviewService.getReviewsByBook(book.getBookId());
         return reviews;
     }
 
-    @RequestMapping(value = "reviews/getrating/{apiurl}", method = RequestMethod.GET)
-    public double getRatingOfABook(@PathVariable String apiurl) {
-        Book book = bookService.getBookByUrl(apiurl);
-        List<Review> reviews= reviewService.getReviewsByBook(book.getBookId());
+    @RequestMapping(value = "reviews/getrating/{bookId}", method = RequestMethod.GET)
+    public double getRatingOfABook(@PathVariable int bookId) {
+        Book book = bookService.getBook(bookId);
+        List<Review> reviews = reviewService.getReviewsByBook(book.getBookId());
         int sum = 0;
-        for(Review rev: reviews){
+        for (Review rev : reviews) {
             sum = rev.getRating();
         }
-        return sum/reviews.size();
+        return sum / reviews.size();
     }
 
 }

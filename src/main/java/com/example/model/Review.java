@@ -59,7 +59,7 @@ public class Review {
     }
 
     public void setBookId(int bookId) {
-        this.bookId = bookId;
+        this.bookId = Integer.valueOf(bookId);
     }
 
     public int getRating() {
