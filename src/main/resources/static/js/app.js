@@ -30,7 +30,7 @@ app
                         },
                         'exploregallery': {
                             templateUrl: '/partials?name=bookgallery',
-                            controller: 'SearchController'
+                            controller: 'ExploreController'
                         }
                     }
                 });
@@ -72,4 +72,21 @@ app
 
         })();
         return userService;
+    })
+    .factory('SearchInputService', function () {
+        var input = [];
+
+        var addInput = function (newObj) {
+            input.push(newObj);
+        };
+
+        var getInput = function () {
+            return input;
+        };
+
+        return {
+            addInput: addInput,
+            getInput: getInput
+        };
+
     });
