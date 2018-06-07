@@ -12,8 +12,8 @@ app.controller("SearchController", [
          **/
         $('form').submit(function (e) {
             e.preventDefault();
-            SearchInputService.addInput("lalalala");
-                window.location.href = "/api/v1/exploreresults";
+            SearchInputService.input.push($scope.searchInput);
+                //window.location.href = "/api/v1/exploreresults";
 
         });
 

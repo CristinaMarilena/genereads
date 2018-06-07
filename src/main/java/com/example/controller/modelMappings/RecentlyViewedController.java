@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.modelMappings;
 
 import com.example.model.RecentlyViewed;
 import com.example.service.AccountService;

@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.page;
 
 import com.example.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class HomeController {
+public class HomePageController {
 
     @Autowired
     private SecurityService securityService;

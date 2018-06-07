@@ -18,7 +18,7 @@ app
                         },
                         'search': {
                             templateUrl: '/partials?name=searchbar',
-                            controller: 'SearchController'
+                            controller: 'ExploreController'
                         },
                         'signin': {
                             templateUrl: '/partials?name=sign-in',
@@ -72,21 +72,45 @@ app
 
         })();
         return userService;
-    })
-    .factory('SearchInputService', function () {
-        var input = [];
-
-        var addInput = function (newObj) {
-            input.push(newObj);
-        };
-
-        var getInput = function () {
-            return input;
-        };
-
-        return {
-            addInput: addInput,
-            getInput: getInput
-        };
-
     });
+
+    app.factory('SearchInputService', ['$http', 'ExploreByTitleService',function ($http, ExploreByTitleService) {
+
+        var obj = {};
+
+        obj.books = [];
+
+        obj.searchInput = "";
+
+
+        obj.getBooks = function(){
+            ExploreByTitleService.query({title: obj.searchInput+ " ,"}).$promise.then(function (result) {
+                obj.books = result;
+                console.log(obj.books);
+                angular.forEach(obj.books, function (book1) {
+                    if (book1.title.length > 30) {
+                        book1.title = book1.title.substring(0, 30);
+                    }
+                });
+
+                angular.forEach(obj.books, function (book2) {
+                    $http.get('/api/v1/books/author/byurl/' + book2.apiUrl).then(function (response) {
+                        var authorsList = response.data;
+                        if (authorsList !== "undefined") {
+                            book2.authors = authorsList[0].substring(0, 20);
+                        } else {
+                            book2.authors = "";
+                        }
+                        console.log(book2.authors);
+                    });
+                });
+
+                console.log(obj.books);
+            });
+        };
+
+
+        /*        SearchInputService.addInput("something");*/
+        console.log(obj.searchInput);
+        return obj;
+    }]);

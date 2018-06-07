@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.modelMappings;
 
 import com.example.google.books.api.ClientCredentials;
 import com.example.google.books.api.CreateBookSearchQuery;

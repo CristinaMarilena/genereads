@@ -11,18 +11,18 @@
     </ul>
 
     <div class="row clearfix">
-        <ul ng-repeat="book in books" class="gallery-post-grid holder">
+        <ul ng-repeat="book in SearchInputService.books" class="gallery-post-grid holder">
             <!--NG REPEAT -->
             <li class="span3 gallery-item" data-id={{book.title}} data-type="illustration video">
                         <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox"
-                                   title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
+                                <a href="/api/v1/book/{{book.apiUrl}}" class="item-zoom-link lightbox"
+                                   title="Custom Illustration" data-rel="prettyPhoto" target="_blank"></a>
+                                <a href="/api/v1/book/{{book.apiUrl}}" class="item-details-link" target="_blank"></a>
                             </span>
                         </span>
-                <a href="gallery-single.htm"><img class="img-gallery" src={{book.bookImage}} alt="Gallery"></a>
-                <span class="project-details"><a href="gallery-single.htm">{{book.title}}</a>by {{book.authors}}</span>
+                <a href="/api/v1/book/{{book.apiUrl}}" target="_blank"><img class="img-gallery" ng-src={{book.bookImage}} alt="Gallery"></a>
+                <span class="project-details"><a href="/api/v1/book/{{book.apiUrl}}" target="_blank">{{book.title}}</a>by {{book.authors}}</span>
             </li>
 
         </ul>

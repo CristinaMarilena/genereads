@@ -1,10 +1,10 @@
-package com.example.controller;
+package com.example.controller.page;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class SignController {
+public class SignPageController {
 
     @RequestMapping("/sign")
     public String signIn() {

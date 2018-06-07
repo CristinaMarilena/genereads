@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.modelMappings;
 
 import com.example.model.Account;
 import com.example.model.Book;
@@ -34,7 +34,7 @@ public class UserReviewController {
 
     @RequestMapping(value = "reviews/addrating/{rating}/bookId/{bookId}", method = RequestMethod.POST)
     public Review addRating(@PathVariable int rating, @PathVariable int bookId) {
-        Account user = accountService.findByEmail("crist@tradeshift.com");
+        Account user = accountService.findByEmail("cris@email");
         Review review = new Review();
         review.setUserId(user.getUserId());
         review.setRating(rating);
