@@ -17,4 +17,6 @@ public interface ReviewService {
     public List<Review> getReviews();
 
     public List<Review> getReviewsByBook(int bookId);
+
+    public Review getReviewByBookAndUser(int userId, int bookId);
 }

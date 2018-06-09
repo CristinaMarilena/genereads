@@ -17,4 +17,7 @@ public interface CurrentlyReadingDAO {
     public List<CurrentlyReading> getCurrentlyReading();
 
     public List<CurrentlyReading> getCurrentlyReadingByUser(int userId);
+
+    public CurrentlyReading getCurrentlyReadingByUserAndBook(int userId, int bookId);
+
 }

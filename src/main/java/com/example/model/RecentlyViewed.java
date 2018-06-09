@@ -11,12 +11,10 @@ public class RecentlyViewed {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int recentlyViewedId;
 
-    @ManyToOne(targetEntity = Account.class)
-    @JoinColumn(name = "userId")
+    @Column(name = "userId")
     private int userId;
 
-    @ManyToOne(targetEntity = Book.class)
-    @JoinColumn(name = "bookId")
+    @Column(name = "bookId")
     private int bookId;
 
     public RecentlyViewed() {

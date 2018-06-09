@@ -52,4 +52,15 @@ public class ToReadDAOImpl implements ToReadDAO {
         else return null;
     }
 
+    @Override
+    public ToRead getToReadByUserAndBook(int userid, int bookId) {
+        List<ToRead> toReadList = getCurrentSession().createQuery("from ToRead where userId=:UserId and bookId=:BookId")
+                .setParameter("UserId", userid)
+                .setParameter("BookId", bookId)
+                .list();
+        if(!toReadList.isEmpty())
+            return toReadList.get(0);
+        else return null;
+    }
+
 }

@@ -1,0 +1,54 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+.stars li::before, .stars li.active::before, .stars li.active ~ li::before, .stars li:hover::before, .stars li:hover ~ li::before {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    vertical-align: middle;
+}
+body {
+    background-color: #efefef;
+}
+* {
+    box-sizing: border-box;
+}
+.wrap {
+    display: inline-block;
+    padding: 1rem 0rem;
+    width: 100%;
+    text-align: left;
+    margin-left: -30px;
+}
+.stars {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    display: inline-block;
+    text-align: left;
+    text-shadow: 1px 1px 1px #000;
+}
+.stars li {
+    cursor: pointer;
+    display: block;
+    float: right;
+    padding: 0 0.375rem;
+    display: inline-block;
+    font-size: 18px;
+    color: #c3c3c3;
+}
+.stars li::before {
+    content: "\f006";
+}
+.stars li.active, .stars li.active ~ li, .stars li:hover, .stars li:hover ~ li {
+    color: #f0b111;
+}
+.stars li.active::before, .stars li.active ~ li::before, .stars li:hover::before, .stars li:hover ~ li::before {
+    content: "\f005";
+}

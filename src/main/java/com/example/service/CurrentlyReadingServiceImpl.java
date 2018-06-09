@@ -39,4 +39,9 @@ public class CurrentlyReadingServiceImpl implements CurrentlyReadingService {
     public List<CurrentlyReading> getCurrentlyReadingByUser(int userId) {
         return currentlyReadingDAO.getCurrentlyReadingByUser(userId);
     }
+
+    @Override
+    public CurrentlyReading getCurrentlyReadingByUserAndBook(int userId, int bookId) {
+        return currentlyReadingDAO.getCurrentlyReadingByUserAndBook(userId, bookId);
+    }
 }

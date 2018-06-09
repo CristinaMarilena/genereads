@@ -2,8 +2,9 @@ package com.example.controller.model.mappings;
 
 import com.example.model.CurrentlyReading;
 import com.example.service.AccountService;
-import com.example.service.SecurityService;
+import com.example.service.BookService;
 import com.example.service.CurrentlyReadingService;
+import com.example.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,38 @@ public class CurrentlyReadingController {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private BookService bookService;
+
+
+    @RequestMapping(value = "reading/byurl/{bookurl}", method = RequestMethod.POST)
+    public CurrentlyReading addToCurrentlyReading(@PathVariable String bookurl) {
+        int userId = accountService.findByEmail("cris@email").getUserId();
+        int bookId = bookService.getBookByUrl(bookurl).getBookId();
+        CurrentlyReading currentlyReadingToBeFound = currentlyReadingService.getCurrentlyReadingByUserAndBook(userId, bookId);
+        if( currentlyReadingToBeFound == null) {
+
+            CurrentlyReading currentlyReading = new CurrentlyReading();
+            currentlyReading.setBookId(bookId);
+            currentlyReading.setUserId(userId);
+
+            currentlyReadingService.addCurrentlyReading(currentlyReading);
+            return currentlyReading;
+        }
+        else {
+            currentlyReadingService.deleteCurrentlyReading(currentlyReadingToBeFound.getCurrentlyReadingId());
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "reading/byurl/{bookurl}", method = RequestMethod.GET)
+    public CurrentlyReading getCurrentlyReading(@PathVariable String bookurl) {
+        int userId = accountService.findByEmail("cris@email").getUserId();
+        int bookId = bookService.getBookByUrl(bookurl).getBookId();
+        CurrentlyReading readingToBeFound = currentlyReadingService.getCurrentlyReadingByUserAndBook(userId, bookId);
+        return (readingToBeFound != null) ? readingToBeFound : null;
+    }
 
     @RequestMapping(value = "currentlyreading", method = RequestMethod.GET)
     public List<CurrentlyReading> list() {

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/search.css">
     <link rel="stylesheet" href="/css/gallery_custom.css">
     <link rel="stylesheet" href="/css/book-custom.css">
+    <link rel="stylesheet" href="/css/rating.css">
 
     <!-- Favicons
     ================================================== -->
@@ -53,7 +54,9 @@
     <script src="/js/searchController.js"></script>
     <script src="/js/bookController.js"></script>
     <script src="/js/homeController.js"></script>
-
+    <script src="/js/services/toReadFactory.js"></script>
+    <script src="/js/services/readingFactory.js"></script>
+    <script src="/js/services/ratingFactory.js"></script>
 
 </head>
 
@@ -92,8 +95,30 @@
                 </div>
                 <div class="span6">
                     <h2>{{accessedBook.title}}</h2>
+                    <h6>({{allRating}}/10)</h6>
                     <p class="lead"> by {{accessedBook.authors}}</p>
                     <p>{{accessedBook.description}}</p>
+
+
+                    <!--RATING-->
+
+                    <div class="wrap">
+                        <ul class="stars">
+                            <li title="5" id="5stars"></li>
+                            <li title="4" id="4stars"></li>
+                            <li title="3" id="3stars"></li>
+                            <li title="2" id="2stars"></li>
+                            <li title="1" id="1stars"></li>
+                        </ul>
+                        <input id="rating" type="hidden" class="required">
+                    </div>
+
+
+              <!--      <h6>Default Button</h6>-->
+                    <p>
+                        <button class="btn" ng-class="class" id="toread" type="button" ng-click="toRead()">To read</button>
+                        <button class="btn" ng-class="readingClass" id="reading" type="button" ng-click="reading()">Reading</button>
+                    </p>
 
                     <ul class="project-info">
                         <li><h6>Date:</h6> 09/12/15</li>

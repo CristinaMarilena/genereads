@@ -52,4 +52,14 @@ public class CurrentlyReadingDAOImpl implements CurrentlyReadingDAO {
         else return null;
     }
 
+    @Override
+    public CurrentlyReading getCurrentlyReadingByUserAndBook(int userId, int bookId) {
+        List<CurrentlyReading> currentlyReadingList = getCurrentSession().createQuery("from CurrentlyReading where userId=:UserId and bookId=:BookId")
+                .setParameter("UserId", userId)
+                .setParameter("BookId", bookId)
+                .list();
+        if(!currentlyReadingList.isEmpty())
+            return currentlyReadingList.get(0);
+        else return null;
+    }
 }

@@ -17,4 +17,6 @@ public interface ToReadService {
     public List<ToRead> getToRead();
 
     public List<ToRead> getToReadByUser(int userId);
+
+    public ToRead getToReadByUserAndBook(int userId, int bookId);
 }

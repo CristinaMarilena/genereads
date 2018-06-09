@@ -18,4 +18,6 @@ public interface ReviewDAO {
 
     public List<Review> getReviewsByBook(int bookId);
 
+    public Review getReviewByBookAndUser(int userId, int bookId);
+
 }

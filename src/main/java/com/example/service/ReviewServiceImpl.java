@@ -39,4 +39,9 @@ public class ReviewServiceImpl implements ReviewService {
     public List<Review> getReviewsByBook(int bookId) {
         return reviewDAO.getReviewsByBook(bookId);
     }
+
+    @Override
+    public Review getReviewByBookAndUser(int userId, int bookId) {
+        return reviewDAO.getReviewByBookAndUser(userId, bookId);
+    }
 }

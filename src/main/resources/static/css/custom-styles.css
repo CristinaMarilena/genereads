@@ -85,7 +85,7 @@ blockquote.pull-right {border-right: 5px solid #999;}
 	border-bottom: 1px dotted #a9a9a9;
 	border-top: 1px dotted #a9a9a9;
 	top:0px;
-	left: 6%;
+	left: 2.3%;
 	position: absolute;
 	min-height: 50px;
 	margin-top: 140px;
@@ -678,7 +678,7 @@ a.accordion-toggle{background: #f5f5f5;}
 .color-bar-1 { background:#414141; height:5px; }
 .color-bar-2 { height:3px; }
 .page-header { margin:0px }
-.lead {line-height:28px; margin: 20px 0px 30px 0px; }
+.lead {line-height:28px; margin: 0px 0px 20px 0px; }
 
 #toTop {
 	width:47px;

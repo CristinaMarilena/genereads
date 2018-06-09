@@ -1,5 +1,6 @@
 package com.example.model;
 
+import org.hibernate.annotations.Target;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -13,12 +14,10 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reviewId;
 
-    @ManyToOne(targetEntity = Account.class)
-    @JoinColumn(name = "userId")
+    @Column(name = "userId")
     private int userId;
 
-    @ManyToOne(targetEntity = Book.class)
-    @JoinColumn(name = "bookId")
+    @Column(name = "bookId")
     private int bookId;
 
     @Column(name = "rating")

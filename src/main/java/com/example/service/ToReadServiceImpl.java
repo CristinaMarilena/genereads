@@ -39,4 +39,9 @@ public class ToReadServiceImpl implements ToReadService {
     public List<ToRead> getToReadByUser(int userId) {
         return toReadDAO.getToReadByUser(userId);
     }
+
+    @Override
+    public ToRead getToReadByUserAndBook(int userId, int bookId) {
+        return toReadDAO.getToReadByUserAndBook(userId, bookId);
+    }
 }

@@ -20,7 +20,7 @@ public class RecentlyViewedDAOImpl implements RecentlyViewedDAO {
 
     public void addRecentlyViewed(RecentlyViewed recentlyViewed, int userId) {
         List<RecentlyViewed> recentlyViewedlist = getRecentlyViewedByUser(userId);
-        if(!recentlyViewedlist.isEmpty()) {
+        if(recentlyViewedlist != null) {
             RecentlyViewed firstRecentlyViewed = recentlyViewedlist.get(0);
             deleteRecentlyViewed(firstRecentlyViewed.getRecentlyViewedId());
         }
@@ -57,7 +57,7 @@ public class RecentlyViewedDAOImpl implements RecentlyViewedDAO {
 
     @Override
     public List<RecentlyViewed> getRecentlyViewedByUser(int userid) {
-        List<RecentlyViewed> recentlyViewed = getCurrentSession().createQuery("from RecentlyViewedService where userId=:UserId order by recentlyViewedId DESC")
+        List<RecentlyViewed> recentlyViewed = getCurrentSession().createQuery("from RecentlyViewed where userId=:UserId order by recentlyViewedId DESC")
                 .setParameter("UserId", userid)
                 .list();
         if(!recentlyViewed.isEmpty())
@@ -67,7 +67,7 @@ public class RecentlyViewedDAOImpl implements RecentlyViewedDAO {
 
     @Override
     public RecentlyViewed getRecentlyViewedByUserAndBook(int userid, int bookId) {
-        List<RecentlyViewed> recentlyViewed = getCurrentSession().createQuery("from RecentlyViewedService where userId=:UserId and bookId=:BookId")
+        List<RecentlyViewed> recentlyViewed = getCurrentSession().createQuery("from RecentlyViewed where userId=:UserId and bookId=:BookId")
                 .setParameter("UserId", userid)
                 .setParameter("BookId", bookId)
                 .list();

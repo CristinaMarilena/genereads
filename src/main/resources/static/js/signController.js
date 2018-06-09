@@ -39,7 +39,7 @@ app.controller("SignController", function ($http, $location, $scope, AccountServ
 
     function signUp() {
 
-        if ($scope.confirmPassword == $scope.account.password) {
+        if ($scope.confirmPassword === $scope.account.password) {
 
             $scope.addAccount = function () { //create a new account. Issues a POST to /api/v1/accounts
                 $scope.account.$save(function () {

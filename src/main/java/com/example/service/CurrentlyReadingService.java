@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.model.CurrentlyReading;
+import sun.util.resources.cldr.ebu.CurrencyNames_ebu;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface CurrentlyReadingService {
     public List<CurrentlyReading> getCurrentlyReading();
 
     public List<CurrentlyReading> getCurrentlyReadingByUser(int userId);
+
+    public CurrentlyReading getCurrentlyReadingByUserAndBook(int userId, int bookId);
 }

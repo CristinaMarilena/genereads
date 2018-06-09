@@ -11,12 +11,10 @@ public class ToRead {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int toReadId;
 
-    @ManyToOne(targetEntity = Account.class)
-    @JoinColumn(name = "userId")
+    @Column(name = "userId")
     private int userId;
 
-    @ManyToOne(targetEntity = Book.class)
-    @JoinColumn(name = "bookId")
+    @Column(name = "bookId")
     private int bookId;
 
     public ToRead() {
