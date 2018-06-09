@@ -1,4 +1,4 @@
-package com.example.controller.modelMappings;
+package com.example.controller.model.mappings;
 
 import com.example.model.CurrentlyReading;
 import com.example.service.AccountService;

@@ -53,6 +53,9 @@ app
     .factory("ExploreByTitleService", function ($resource) {
         return $resource('/api/v1/explore/bytitle/:title', {}, {update: {method: 'PUT'}});
     })
+    .factory("GetAccessedBookService", function ($resource) {
+        return $resource('/api/v1/books/byaccessedurl', {});
+    })
     .service("UserService", function () {
         var user = {};
         var userService = (function () {
