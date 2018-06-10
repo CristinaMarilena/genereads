@@ -31,6 +31,18 @@ public class Book implements BookInterface{
     @Column(name = "description")
     private String description;
 
+    @Column(name = "publishedDate")
+    private String publishedDate;
+
+    @Column(name = "language")
+    private String language;
+
+    @Column(name = "previewLink")
+    private String previewLink;
+
+    @Column(name = "pageCount")
+    private int pageCount;
+
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {
                     CascadeType.PERSIST,
@@ -56,11 +68,24 @@ public class Book implements BookInterface{
     public Book() {
     }
 
-    public Book(String title, String apiUrl, String bookImage, String description, Set<Author> authors, Set<BookCategory> categories) {
+    public Book(String title,
+                String apiUrl,
+                String bookImage,
+                String description,
+                String publishedDate,
+                String language,
+                String previewLink,
+                int pageCount,
+                Set<Author> authors,
+                Set<BookCategory> categories) {
         this.title = title;
         this.apiUrl = apiUrl;
         this.bookImage = bookImage;
         this.description = description;
+        this.publishedDate = publishedDate;
+        this.language = language;
+        this.previewLink = previewLink;
+        this.pageCount = pageCount;
         this.authors = authors;
         this.categories = categories;
     }
@@ -122,5 +147,37 @@ public class Book implements BookInterface{
 
     public void setBookImage(String bookImage) {
         this.bookImage = bookImage;
+    }
+
+    public String getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public int getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+
+    public String getPreviewLink() {
+        return previewLink;
+    }
+
+    public void setPreviewLink(String previewLink) {
+        this.previewLink = previewLink;
     }
 }

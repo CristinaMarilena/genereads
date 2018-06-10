@@ -57,42 +57,61 @@
     <script src="/js/services/toReadFactory.js"></script>
     <script src="/js/services/readingFactory.js"></script>
     <script src="/js/services/ratingFactory.js"></script>
+    <script src="/js/services/reviewFactory.js"></script>
+    <script src="/js/services/bookFactory.js"></script>
 
 </head>
 
 <body ng-controller="BookController">
-	<div class="color-bar-1"></div>
-    <div class="color-bar-2 color-bg"></div>
-    
-    <div class="container main-container">
-    
-      <div class="row header"><!-- Begin Header -->
+<div class="color-bar-1"></div>
+<div class="color-bar-2 color-bg"></div>
 
-          <!-- Logo
-  ================================================== -->
-          <div class="span5 logo">
-              <a href="index.htm"><img src="/img/title_logo.png" alt="" /></a>
-              <h5>The next book you`ll love</h5>
-          </div>
+<div class="container main-container">
 
-          <br/>
-          <br/>
-          <div ui-view="menu"></div>
+    <div class="row header"><!-- Begin Header -->
 
-      </div><!-- End Header -->
-     
+        <!-- Logo
+================================================== -->
+        <div class="span5 logo">
+            <a href="index.htm"><img src="/img/title_logo.png" alt=""/></a>
+            <h5>The next book you`ll love</h5>
+        </div>
+
+        <br/>
+        <br/>
+        <div ui-view="menu"></div>
+
+    </div><!-- End Header -->
+
     <!-- Page Content
-    ================================================== --> 
+    ================================================== -->
     <div class="row">
 
         <!-- Gallery Items
-        ================================================== --> 
+        ================================================== -->
         <div class="span12 gallery-single">
 
             <div class="row">
                 <div class="span6">
                     <img ng-src={{accessedBook.bookImage}} class="book-align-left thumbnail" alt="image">
+
+                    <!-- Post Comments
+        ================================================== -->
+                    <section class="comments">
+                        <ul>
+                            <li ng-repeat="review in reviews">
+                                <img src="img/user-avatar.jpg" alt="Image"/>
+                                <span class="comment-name">{{review.username}}</span>
+                                <span class="comment-date">{{review.timestamp}}</span>
+                                <div class="comment-content">{{review.review}}
+                                </div>
+                            </li>
+
+                        </ul>
+                    </section><!-- Close comments section-->
+
                 </div>
+
                 <div class="span6">
                     <h2>{{accessedBook.title}}</h2>
                     <h6>({{allRating}}/10)</h6>
@@ -114,107 +133,130 @@
                     </div>
 
 
-              <!--      <h6>Default Button</h6>-->
+                    <!--      <h6>Default Button</h6>-->
                     <p>
-                        <button class="btn" ng-class="class" id="toread" type="button" ng-click="toRead()">To read</button>
-                        <button class="btn" ng-class="readingClass" id="reading" type="button" ng-click="reading()">Reading</button>
+                        <button class="btn" ng-class="class" id="toread" type="button" ng-click="toRead()">To read
+                        </button>
+                        <button class="btn" ng-class="readingClass" id="reading" type="button" ng-click="reading()">
+                            Reading
+                        </button>
                     </p>
 
                     <ul class="project-info">
-                        <li><h6>Date:</h6> 09/12/15</li>
-                        <li><h6>Client:</h6> John Doe, Inc.</li>
-                        <li><h6>Services:</h6> Design, Illustration</li>
-                        <li><h6>Art Director:</h6> Jane Doe</li>
-                        <li><h6>Designer:</h6> Jimmy Doe</li>
+                        <li><h6>Category: </h6> {{accessedBook.category}}</li>
+                        <li><h6>Language: </h6> {{accessedBook.language}}.</li>
+                        <li><h6>Published Date: </h6> {{accessedBook.publishedDate}}</li>
+                        <li><h6>Page count: </h6> {{accessedBook.pageCount}}</li>
                     </ul>
 
-                    <button class="btn btn-inverse pull-left" type="button">Visit Website</button>
-                    <a href="#" class="pull-right"><i class="icon-arrow-left"></i>Back to Gallery</a>
+                    <a class="btn btn-inverse pull-left" href={{accessedBook.previewLink}} target="_blank">Preview</a>
+                    <a href="/" class="pull-right"><i class="icon-arrow-left"></i>Back to home</a>
+
+                    <!-- Comment Form -->
+                    <div class="comment-form-container">
+                        <h6>Leave a review</h6>
+                        <form action="#" id="comment-form">
+                            <textarea class="span6" ng-model="review"></textarea>
+                            <div class="row">
+                                <div class="span2">
+                                    <input type="submit" class="btn btn-inverse" value="Post My Review" ng-click="addReview()">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
 
         </div><!-- End gallery-single-->
 
     </div><!-- End container row -->
-    
-    </div> <!-- End Container -->
 
-    <!-- Footer Area
-        ================================================== -->
-	<div class="footer-container"><!-- Begin Footer -->
-    	<div class="container">
-        	<div class="row footer-row">
-                <div class="span3 footer-col">
-                    <h5>About Us</h5>
-                   <img src="/img/piccolo-footer-logo.png" alt="Piccolo" /><br /><br />
-                    <address>
-                        <strong>Design Team</strong><br />
-                        123 Main St, Suite 500<br />
-                        New York, NY 12345<br />
-                    </address>
-                    <ul class="social-icons">
-                        <li><a href="#" class="social-icon facebook"></a></li>
-                        <li><a href="#" class="social-icon twitter"></a></li>
-                        <li><a href="#" class="social-icon dribble"></a></li>
-                        <li><a href="#" class="social-icon rss"></a></li>
-                        <li><a href="#" class="social-icon forrst"></a></li>
-                    </ul>
-                </div>
-                <div class="span3 footer-col">
-                    <h5>Latest Tweets</h5>
-                    <ul>
-                        <li><a href="#">@room122</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        <li><a href="#">@room122</a> In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi blandit ultricies ultrices.</li>
-                        <li><a href="#">@room122</a> Vivamus nec lectus sed orci molestie molestie. Etiam mattis neque eu orci rutrum aliquam.</li>
-                    </ul>
-                </div>
-                <div class="span3 footer-col">
-                    <h5>Latest Posts</h5>
-                     <ul class="post-list">
-                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                        <li><a href="#">Consectetur adipiscing elit est lacus gravida</a></li>
-                        <li><a href="#">Lectus sed orci molestie molestie etiam</a></li>
-                        <li><a href="#">Mattis consectetur adipiscing elit est lacus</a></li>
-                        <li><a href="#">Cras rutrum, massa non blandit convallis est</a></li>
-                    </ul>
-                </div>
-                <div class="span3 footer-col">
-                    <h5>Flickr Photos</h5>
-                    <ul class="img-feed">
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                    </ul>
-                </div>
+</div> <!-- End Container -->
+
+<!-- Footer Area
+    ================================================== -->
+<div class="footer-container"><!-- Begin Footer -->
+    <div class="container">
+        <div class="row footer-row">
+            <div class="span3 footer-col">
+                <h5>About Us</h5>
+                <img src="/img/piccolo-footer-logo.png" alt="Piccolo"/><br/><br/>
+                <address>
+                    <strong>Design Team</strong><br/>
+                    123 Main St, Suite 500<br/>
+                    New York, NY 12345<br/>
+                </address>
+                <ul class="social-icons">
+                    <li><a href="#" class="social-icon facebook"></a></li>
+                    <li><a href="#" class="social-icon twitter"></a></li>
+                    <li><a href="#" class="social-icon dribble"></a></li>
+                    <li><a href="#" class="social-icon rss"></a></li>
+                    <li><a href="#" class="social-icon forrst"></a></li>
+                </ul>
             </div>
+            <div class="span3 footer-col">
+                <h5>Latest Tweets</h5>
+                <ul>
+                    <li><a href="#">@room122</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    <li><a href="#">@room122</a> In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum.
+                        Morbi blandit ultricies ultrices.
+                    </li>
+                    <li><a href="#">@room122</a> Vivamus nec lectus sed orci molestie molestie. Etiam mattis neque eu
+                        orci rutrum aliquam.
+                    </li>
+                </ul>
+            </div>
+            <div class="span3 footer-col">
+                <h5>Latest Posts</h5>
+                <ul class="post-list">
+                    <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                    <li><a href="#">Consectetur adipiscing elit est lacus gravida</a></li>
+                    <li><a href="#">Lectus sed orci molestie molestie etiam</a></li>
+                    <li><a href="#">Mattis consectetur adipiscing elit est lacus</a></li>
+                    <li><a href="#">Cras rutrum, massa non blandit convallis est</a></li>
+                </ul>
+            </div>
+            <div class="span3 footer-col">
+                <h5>Flickr Photos</h5>
+                <ul class="img-feed">
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                    <li><a href="#"><img src="/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
+                </ul>
+            </div>
+        </div>
 
-            <div class="row"><!-- Begin Sub Footer -->
-                <div class="span12 footer-col footer-sub">
-                    <div class="row no-margin">
-                        <div class="span6"><span class="left">Copyright 2012 Piccolo Theme. All rights reserved.</span></div>
-                        <div class="span6">
+        <div class="row"><!-- Begin Sub Footer -->
+            <div class="span12 footer-col footer-sub">
+                <div class="row no-margin">
+                    <div class="span6"><span class="left">Copyright 2012 Piccolo Theme. All rights reserved.</span>
+                    </div>
+                    <div class="span6">
                             <span class="right">
-                            <a href="#">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Gallery</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Blog</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact</a>
+                            <a href="#">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
+                                    href="#">Gallery</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Blog</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
+                                    href="#">Contact</a>
                             </span>
-                        </div>
                     </div>
                 </div>
-            </div><!-- End Sub Footer -->
+            </div>
+        </div><!-- End Sub Footer -->
 
-        </div>
-    </div><!-- End Footer -->
+    </div>
+</div><!-- End Footer -->
 
-    <!-- Scroll to Top -->  
-    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-    
+<!-- Scroll to Top -->
+<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
 </body>
 </html>

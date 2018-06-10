@@ -16,6 +16,7 @@ import com.google.api.services.books.BooksRequestInitializer;
 import com.google.api.services.books.model.Volume;
 import com.google.api.services.books.model.Volumes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -73,8 +74,8 @@ public class GoogleBooksController {
                 bookListAuthor = search(queryAuthor, books);
                 bookListTitle = search(queryTitle, books);
 
-                bookList.addAll(bookListAuthor.subList(0, bookListAuthor.size()/2));
-                bookList.addAll(bookListTitle.subList(0, bookListTitle.size()/2));
+                bookList.addAll(bookListAuthor.subList(0, bookListAuthor.size() / 2));
+                bookList.addAll(bookListTitle.subList(0, bookListTitle.size() / 2));
 
 
             } else {
@@ -121,8 +122,23 @@ public class GoogleBooksController {
 
                 if (bookToBefound == null) {
                     book.setApiUrl(urlId);
+                    if (volume.getVolumeInfo().getPageCount() != null) {
+                        book.setPageCount(volume.getVolumeInfo().getPageCount());
+                    }
 
-                    if(volume.getVolumeInfo().getImageLinks()!= null) {
+                    if (volume.getVolumeInfo().getPublishedDate() != null) {
+                        book.setPublishedDate(volume.getVolumeInfo().getPublishedDate());
+                    }
+
+                    if (volume.getVolumeInfo().getLanguage() != null) {
+                        book.setLanguage(volume.getVolumeInfo().getLanguage());
+                    }
+
+                    if (volume.getVolumeInfo().getPreviewLink() != null) {
+                        book.setPreviewLink(volume.getVolumeInfo().getPreviewLink());
+                    }
+
+                    if (volume.getVolumeInfo().getImageLinks() != null) {
                         if (volume.getVolumeInfo().getImageLinks().getThumbnail() != null) {
                             String imageLinks = volume.getVolumeInfo().getImageLinks().getThumbnail();
                             book.setBookImage(imageLinks);
@@ -197,7 +213,23 @@ public class GoogleBooksController {
                     book.setApiUrl(urlId);
                     System.out.println("Book already exists");
 
-                    if(volume.getVolumeInfo().getImageLinks()!= null) {
+                    if (volume.getVolumeInfo().getPageCount() > 0) {
+                        book.setPageCount(volume.getVolumeInfo().getPageCount());
+                    }
+
+                    if (volume.getVolumeInfo().getPublishedDate() != null) {
+                        book.setPublishedDate(volume.getVolumeInfo().getPublishedDate());
+                    }
+
+                    if (volume.getVolumeInfo().getLanguage() != null) {
+                        book.setLanguage(volume.getVolumeInfo().getLanguage());
+                    }
+
+                    if (volume.getVolumeInfo().getPreviewLink() != null) {
+                        book.setPreviewLink(volume.getVolumeInfo().getPreviewLink());
+                    }
+
+                    if (volume.getVolumeInfo().getImageLinks() != null) {
                         if (volume.getVolumeInfo().getImageLinks().getThumbnail() != null) {
                             String imageLinks = volume.getVolumeInfo().getImageLinks().getThumbnail();
                             book.setBookImage(imageLinks);

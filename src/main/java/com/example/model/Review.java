@@ -4,6 +4,7 @@ import org.hibernate.annotations.Target;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "review")
@@ -27,14 +28,18 @@ public class Review {
     @Column(name = "review")
     private String review;
 
+    @Column(name = "timestamp")
+    private String timestamp;
+
     public Review() {
     }
 
-    public Review(int userId, int bookId, int rating, String review) {
+    public Review(int userId, int bookId, int rating, String review, String timestamp) {
         this.userId = userId;
         this.bookId = bookId;
         this.rating = rating;
         this.review = review;
+        this.timestamp = timestamp;
     }
 
     public int getReviewId() {
@@ -75,6 +80,14 @@ public class Review {
 
     public void setReview(String review) {
         this.review = review;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override

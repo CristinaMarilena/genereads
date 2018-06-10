@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import com.example.model.Book;
+import com.example.model.BookCategory;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface BookDAO {
     public List<Book> getBooks();
 
     public Book findByUrl(String url);
+
+    public BookCategory getCategoryByBookUrl(String url);
 }

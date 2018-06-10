@@ -28,6 +28,7 @@ public class ReviewDAOImpl implements ReviewDAO {
         reviewToUpdate.setRating(review.getRating());
         reviewToUpdate.setReview(review.getReview());
         reviewToUpdate.setUserId(review.getUserId());
+        reviewToUpdate.setTimestamp(review.getTimestamp());
         getCurrentSession().update(reviewToUpdate);
     }
 
@@ -56,7 +57,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 
     @Override
     public Review getReviewByBookAndUser(int userId, int bookId) {
-        List<Review> reviewList = getCurrentSession().createQuery("from Review where userId=:UserId and bookId=:BookId")
+        List<Review> reviewList = getCurrentSession().createQuery("from Review where userId=:UserId and bookId=:BookId and rating > 0")
                 .setParameter("UserId", userId)
                 .setParameter("BookId", bookId)
                 .list();

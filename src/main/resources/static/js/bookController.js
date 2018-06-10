@@ -7,9 +7,22 @@ app.controller("BookController", [
     'RatingService',
     'GetRatingService',
     'GetAllRatingService',
-    function ($http, $scope, GetAccessedBookService, ToReadService, ReadingService, RatingService,
+    'ReviewService',
+    'GetAllReviewsService',
+    "AccountService",
+    'CategoryByBookFactory',
+    function ($http,
+              $scope,
+              GetAccessedBookService,
+              ToReadService,
+              ReadingService,
+              RatingService,
               GetRatingService,
-              GetAllRatingService) {
+              GetAllRatingService,
+              ReviewService,
+              GetAllReviewsService,
+              AccountService,
+              CategoryByBookFactory) {
 
         $scope.accessedBook = undefined;
 
@@ -17,6 +30,8 @@ app.controller("BookController", [
         $scope.readingClass = "";
         $scope.rating = undefined;
         $scope.allRating = undefined;
+        $scope.review = "";
+        $scope.reviews = [];
 
         GetAccessedBookService.get().$promise.then(function (result) {
             $scope.accessedBook = result;
@@ -27,6 +42,11 @@ app.controller("BookController", [
                 $scope.accessedBook.authors = authorsList[0];
             });
 
+
+            CategoryByBookFactory.get({bookurl: $scope.accessedBook.apiUrl}).$promise.then(function (result) {
+                console.log(result);
+                $scope.accessedBook.category = result.categoryName;
+            });
 
             ToReadService.get({bookurl: $scope.accessedBook.apiUrl}).$promise.then(function (result) {
                 console.log(result.bookId);
@@ -67,6 +87,16 @@ app.controller("BookController", [
             GetAllRatingService.get({bookurl: $scope.accessedBook.apiUrl}).$promise.then(function (result) {
                 console.log(result.rating);
                 $scope.allRating = result.rating;
+            });
+
+            GetAllReviewsService.query({bookurl: $scope.accessedBook.apiUrl}).$promise.then(function (result) {
+                console.log(result);
+                $scope.reviews = result;
+                angular.forEach($scope.reviews, function (rev) {
+                    AccountService.get({id: rev.userId}).$promise.then(function (result) {
+                        rev.username = result.username;
+                    });
+                });
             });
 
         });
@@ -112,6 +142,15 @@ app.controller("BookController", [
             RatingService.save({bookurl: $scope.accessedBook.apiUrl, rating: rating}).$promise.then(function (result) {
                 console.log(result);
             });
-        }
+        };
+
+        $scope.addReview = function(){
+            console.log("review");
+            ReviewService.save({bookurl: $scope.accessedBook.apiUrl} ,$scope.review).$promise.then(function (result) {
+                console.log(result);
+                location.reload();
+            });
+            $scope.review = "";
+        };
     }
 ]);

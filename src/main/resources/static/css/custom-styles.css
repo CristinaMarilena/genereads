@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5 {text-shadow: 1px 1px 0 #fdfdfd, 2px 2px 0 rgba(81, 81, 81, 0
 h1.title-bg, h2.title-bg, h3.title-bg, h4.title-bg , h5.title-bg, h6.title-bg {
 	background:#f8f8f8;
 	padding:10px 5px;
-	margin: 0px 0px 20px 0px;
+	margin: 0px 0px 20px 30px;
 	border-bottom: 1px dotted #a9a9a9;
 	border-top: 1px dotted #a9a9a9;
 }
@@ -39,6 +39,14 @@ h5.title-bg button {
 	float: right;
 	text-transform: none;
 	margin-left:5px;
+}
+
+.span6 {
+	width: 509px;
+}
+
+.span6-index {
+	width: 559px;
 }
 
 /***** Links *****/
@@ -62,7 +70,7 @@ blockquote.pull-right {border-right: 5px solid #999;}
 **************************************/
 .logo {
 	margin-top: 50px;
-	margin-left: 40px;
+	margin-left: 90px;
 }
 .logo img { padding-right:20px; }
 .logo h5 { display: inline-block; }
@@ -85,7 +93,7 @@ blockquote.pull-right {border-right: 5px solid #999;}
 	border-bottom: 1px dotted #a9a9a9;
 	border-top: 1px dotted #a9a9a9;
 	top:0px;
-	left: 2.3%;
+	left: 7.3%;
 	position: absolute;
 	min-height: 50px;
 	margin-top: 140px;
@@ -487,7 +495,9 @@ ul.post-data li:last-child {padding-right: 0px;}
 .about-author img {float: left; margin-right: 20px;}
 
 /*** Comments ***/
-.comments ul {margin:0px;}
+.comments ul {
+	margin-top: 500px;
+	margin-left: 60px;}
 .comments ul li {
 	list-style: none;
 	padding: 20px;
@@ -517,6 +527,7 @@ ul.post-data li:last-child {padding-right: 0px;}
 	clear: both;
 }
 .comment-content { clear:both; padding-top:10px; }
+.comment-form-container{margin-top: 100px;}
 .comment-form-container input,
 #contact-form input {margin-bottom: 12px;}
 .comment-form-container textarea,

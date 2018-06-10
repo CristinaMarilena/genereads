@@ -1,6 +1,7 @@
 package com.example.controller.model.mappings;
 
 import com.example.model.Book;
+import com.example.model.BookCategory;
 import com.example.service.BookAuthorService;
 import com.example.service.BookService;
 import com.example.user.accesed.AccessedBook;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("api/v1/")
@@ -80,5 +82,10 @@ public class BookController {
     @RequestMapping(value = "books/author/byurl/{apiurlid}", method = RequestMethod.GET)
     public List<String> getAuthorByBookUrl(@PathVariable String apiurlid){
        return bookAuthorService.getAuthorByBook(apiurlid);
+    }
+
+    @RequestMapping(value = "books/category/byurl/{bookurl}", method = RequestMethod.GET)
+    public BookCategory getCategoryByBookUrl(@PathVariable String bookurl){
+        return bookService.getCategoryByBookUrl(bookurl);
     }
 }

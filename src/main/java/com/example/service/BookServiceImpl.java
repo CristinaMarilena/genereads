@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dao.BookDAO;
 import com.example.model.Book;
+import com.example.model.BookCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,5 +40,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book getBookByUrl(String url) {
         return bookDAO.findByUrl(url);
+    }
+
+    @Override
+    public BookCategory getCategoryByBookUrl(String bookurl) {
+        return bookDAO.getCategoryByBookUrl(bookurl);
     }
 }
