@@ -213,7 +213,7 @@ public class GoogleBooksController {
                     book.setApiUrl(urlId);
                     System.out.println("Book already exists");
 
-                    if (volume.getVolumeInfo().getPageCount() > 0) {
+                    if (volume.getVolumeInfo().getPageCount() != null) {
                         book.setPageCount(volume.getVolumeInfo().getPageCount());
                     }
 

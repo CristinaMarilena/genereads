@@ -109,9 +109,4 @@ public class Account {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
 }

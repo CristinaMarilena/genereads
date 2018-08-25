@@ -85,7 +85,6 @@ app
 
         obj.searchInput = "";
 
-
         obj.getBooks = function(){
             ExploreByTitleService.query({title: obj.searchInput+ " ,"}).$promise.then(function (result) {
                 obj.books = result;
@@ -112,8 +111,14 @@ app
             });
         };
 
-
-        /*        SearchInputService.addInput("something");*/
-        console.log(obj.searchInput);
         return obj;
     }]);
+
+app.factory('DisplayFactory', [function () {
+
+    var obj = {};
+
+    obj.searched = false;
+
+    return obj;
+}]);

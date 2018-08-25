@@ -10,6 +10,8 @@
         <li><a href="#" class="web">Web</a></li>
     </ul>
 
+    <span ng-show="!DisplayFactory.searched">Recently viewed</span>
+
     <div class="row clearfix">
         <ul ng-repeat="book in SearchInputService.books" class="gallery-post-grid holder">
             <!--NG REPEAT -->
@@ -26,7 +28,6 @@
             </li>
 
         </ul>
-
     </div>
     <!-- Pagination -->
     <div class="pagination">

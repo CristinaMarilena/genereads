@@ -28,6 +28,10 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * WebSecurityConfigurerAdapter provides the Spring Security configuration
+ * We only override the methods we want to customize
+ */
 @EnableOAuth2Client
 @RestController
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -43,6 +47,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public Principal user(Principal principal) {
         return principal;
     }
+
+    /**
+     * Providing Google and Facebook OAuth2 authorization
+     * @return
+     */
 
     @Bean
     @ConfigurationProperties("facebook.client")
@@ -124,8 +133,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-            throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
 

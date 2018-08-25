@@ -2,7 +2,11 @@ app.controller("SearchController", [
     '$http',
     '$scope',
     'SearchInputService',
-    function ($http, $scope, SearchInputService) {
+    'DisplayFactory',
+    function ($http,
+              $scope,
+              SearchInputService,
+              DisplayFactory) {
         $scope.searchInput = "";
 
         debugger;
@@ -12,9 +16,10 @@ app.controller("SearchController", [
          **/
         $('form').submit(function (e) {
             e.preventDefault();
+/*
             SearchInputService.input.push($scope.searchInput);
-                //window.location.href = "/api/v1/exploreresults";
-
+*/
+            DisplayFactory.searched.push(true);
         });
 
         /**
