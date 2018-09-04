@@ -1,4 +1,4 @@
-package com.example.controller.page;
+package com.example.controller.customized;
 
 import com.example.user.accesed.AccessedBook;
 import org.springframework.beans.factory.annotation.Autowired;

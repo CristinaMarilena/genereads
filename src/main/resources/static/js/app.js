@@ -14,7 +14,7 @@ app
                         },
                         'menu': {
                             templateUrl: '/partials?name=menu',
-                            controller: 'HomeController'
+                            controller: 'ExploreController'
                         },
                         'search': {
                             templateUrl: '/partials?name=searchbar',
@@ -50,11 +50,17 @@ app
     .factory("LoginService", function ($resource) {
         return $resource('/login/v1', {}, {update: {method: 'PUT'}});
     })
-    .factory("ExploreByTitleService", function ($resource) {
-        return $resource('/api/v1/explore/bytitle/:title', {}, {update: {method: 'PUT'}});
+    .factory("RecommendationService", function ($resource) {
+        return $resource('/api/v1/rec', {}, {update: {method: 'PUT'}});
+    })
+    .factory("ExploreService", function ($resource) {
+        return $resource('/api/v1/explore/by/:param', {}, {update: {method: 'PUT'}});
     })
     .factory("GetAccessedBookService", function ($resource) {
         return $resource('/api/v1/books/byaccessedurl', {});
+    })
+    .factory("CurrentlyReadingService", function ($resource) {
+        return $resource('/api/v1/currentlyreading/own', {});
     })
     .service("UserService", function () {
         var user = {};
@@ -77,7 +83,16 @@ app
         return userService;
     });
 
-    app.factory('SearchInputService', ['$http', 'ExploreByTitleService',function ($http, ExploreByTitleService) {
+    app.factory('SearchInputService',
+        ['$http',
+            'ExploreService',
+            'RecommendationService',
+            'CurrentlyReadingService',
+        function (
+            $http,
+            ExploreService,
+            RecommendationService,
+            CurrentlyReadingService) {
 
         var obj = {};
 
@@ -85,8 +100,22 @@ app
 
         obj.searchInput = "";
 
+        obj.serviceType = "";
+
+        let service;
+
         obj.getBooks = function(){
-            ExploreByTitleService.query({title: obj.searchInput+ " ,"}).$promise.then(function (result) {
+            if(obj.serviceType === "search") {
+                service = ExploreService.query({param: obj.searchInput + " ,"});
+            }
+            if(obj.serviceType === "currently"){
+                service = CurrentlyReadingService.query({});
+            }
+            if(obj.serviceType === "rec"){
+                service = RecommendationService.query({});
+            }
+
+            service.$promise.then(function (result) {
                 obj.books = result;
                 console.log(obj.books);
                 angular.forEach(obj.books, function (book1) {
@@ -109,6 +138,22 @@ app
 
                 console.log(obj.books);
             });
+        };
+
+        obj.getServiceType = function (type) {
+            debugger;
+            if(type === "search")
+                obj.serviceType = "search";
+            if(type === "rec")
+                obj.serviceType = "rec";
+            if(type === "read")
+                obj.serviceType = "read";
+            if(type === "toread")
+                obj.serviceType = "toread";
+            if(type === "currently")
+                obj.serviceType = "currently";
+            if(type === "recently")
+                obj.serviceType = "recently";
         };
 
         return obj;

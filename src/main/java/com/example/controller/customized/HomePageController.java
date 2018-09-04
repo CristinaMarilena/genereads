@@ -1,4 +1,4 @@
-package com.example.controller.page;
+package com.example.controller.customized;
 
 import com.example.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +15,11 @@ public class HomePageController {
     @RequestMapping("/")
     public String home() {
         System.out.println("LOGGED IN : " + securityService.findLoggedInUsername());
-
         return "/index.htm";
     }
 
     @RequestMapping("/partials")
-    public String authPlease123(@RequestParam(value = "name", defaultValue = "something") String name){
-
+    public String getPartials(@RequestParam(value = "name", defaultValue = "something") String name){
         return "partials/"+name+".html";
     }
 }

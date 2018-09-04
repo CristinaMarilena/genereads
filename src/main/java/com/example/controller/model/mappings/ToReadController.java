@@ -30,7 +30,7 @@ public class ToReadController {
 
     @RequestMapping(value = "toread/byurl/{bookurl}", method = RequestMethod.POST)
     public ToRead addToRead(@PathVariable String bookurl) {
-        int userId = accountService.findByEmail("cris@email").getUserId();
+        int userId = accountService.findByEmail(securityService.findLoggedInUsername()).getUserId();
         int bookId = bookService.getBookByUrl(bookurl).getBookId();
         ToRead toReadToBeFound = toReadService.getToReadByUserAndBook(userId, bookId);
         if( toReadToBeFound == null) {
@@ -50,7 +50,7 @@ public class ToReadController {
 
     @RequestMapping(value = "toread/byurl/{bookurl}", method = RequestMethod.GET)
     public ToRead getToRead(@PathVariable String bookurl) {
-        int userId = accountService.findByEmail("cris@email").getUserId();
+        int userId = accountService.findByEmail(securityService.findLoggedInUsername()).getUserId();
         int bookId = bookService.getBookByUrl(bookurl).getBookId();
         ToRead toReadToBeFound = toReadService.getToReadByUserAndBook(userId, bookId);
         return (toReadToBeFound != null) ? toReadToBeFound : null;

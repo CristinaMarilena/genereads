@@ -1,4 +1,4 @@
-package com.example.controller.model.mappings;
+package com.example.controller.customized;
 
 import com.example.model.Account;
 import com.example.service.SecurityService;

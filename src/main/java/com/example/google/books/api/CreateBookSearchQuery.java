@@ -5,7 +5,6 @@ public class CreateBookSearchQuery {
     public static String getSearchQuery(String searchType, String searchParam){
 
         try {
-
             String[] myQuery = new String[2];
             myQuery[0] = searchType;
             myQuery[1] = searchParam;
@@ -14,7 +13,7 @@ public class CreateBookSearchQuery {
                 System.err.println("Usage: BooksSample [--author|--isbn|--title] \"<query>\"");
                 System.exit(1);
             }
-            // Parse command line parameters into a query.
+            // Parse parameters into a query.
             // Query format: "[<author|isbn|intitle>:]<query>"
             String prefix = null;
             String query = "";

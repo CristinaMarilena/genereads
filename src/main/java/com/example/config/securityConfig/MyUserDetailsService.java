@@ -5,6 +5,7 @@ import com.example.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -48,7 +49,14 @@ public class MyUserDetailsService implements UserDetailsService {
 
             Collection<? extends GrantedAuthority> userAuthorities;
             userAuthorities = getAuthorities();
-            return new org.springframework.security.core.userdetails.User(account.getEmail(), account.getPassword(),true, true, true, true, userAuthorities);
+            return new User(
+                    account.getEmail(),
+                    account.getPassword(),
+                    true,
+                    true,
+                    true,
+                    true,
+                    userAuthorities);
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }

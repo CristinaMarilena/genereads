@@ -38,7 +38,6 @@ app.controller("SignController", function ($http, $location, $scope, AccountServ
     $scope.account = new AccountService();
 
     function signUp() {
-
         if ($scope.confirmPassword === $scope.account.password) {
 
             $scope.addAccount = function () { //create a new account. Issues a POST to /api/v1/accounts
@@ -56,7 +55,6 @@ app.controller("SignController", function ($http, $location, $scope, AccountServ
         }
     }
 
-
     /*Login*/
     document.getElementById("login-form").onsubmit = function () {
         login()
@@ -68,7 +66,6 @@ app.controller("SignController", function ($http, $location, $scope, AccountServ
         debugger;
         var account = AccountEmailService.get({email: $scope.account.email}, function () {
             console.log(account.email);
-
 
             $scope.loggedAccount.email = account.email;
             $scope.loggedAccount.password = account.password;
@@ -85,11 +82,7 @@ app.controller("SignController", function ($http, $location, $scope, AccountServ
 
             $scope.loginAccount();
         });
-
-
     }
-
-
 });
 
 

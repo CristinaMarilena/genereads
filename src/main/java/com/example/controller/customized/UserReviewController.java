@@ -1,6 +1,5 @@
-package com.example.controller.model.mappings;
+package com.example.controller.customized;
 
-import com.example.model.Account;
 import com.example.model.Book;
 import com.example.model.RecentlyViewed;
 import com.example.model.Review;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -23,9 +21,6 @@ public class UserReviewController {
     private ReviewService reviewService;
 
     @Autowired
-    private SecurityService securityService;
-
-    @Autowired
     private AccountService accountService;
 
     @Autowired
@@ -34,9 +29,12 @@ public class UserReviewController {
     @Autowired
     private RecentlyViewedService recentlyViewedService;
 
+    @Autowired
+    private SecurityService securityService;
+
     @RequestMapping(value = "reviews/addrating/{rating}/bookurl/{bookurl}", method = RequestMethod.POST)
     public Review addRating(@PathVariable int rating, @PathVariable String bookurl) {
-        int userId = accountService.findByEmail("cris@email").getUserId();
+        int userId = accountService.findByEmail(securityService.findLoggedInUsername()).getUserId();
         int bookId = bookService.getBookByUrl(bookurl).getBookId();
         Review reviewToBeFound = reviewService.getReviewByBookAndUser(userId, bookId);
         if (reviewToBeFound == null) {
@@ -63,7 +61,7 @@ public class UserReviewController {
 
     @RequestMapping(value = "reviews/getrating/bookurl/{bookurl}", method = RequestMethod.GET)
     public Review getRating(@PathVariable String bookurl) {
-        int userId = accountService.findByEmail("cris@email").getUserId();
+        int userId = accountService.findByEmail(securityService.findLoggedInUsername()).getUserId();
         int bookId = bookService.getBookByUrl(bookurl).getBookId();
         return reviewService.getReviewByBookAndUser(userId, bookId);
     }
@@ -71,7 +69,7 @@ public class UserReviewController {
 
     @RequestMapping(value = "reviews/addreview/bookurl/{bookurl}", method = RequestMethod.POST)
     public Review addReview(@RequestBody String reviewText, @PathVariable String bookurl) {
-        int userId = accountService.findByEmail("cris@email").getUserId();
+        int userId = accountService.findByEmail(securityService.findLoggedInUsername()).getUserId();
         int bookId = bookService.getBookByUrl(bookurl).getBookId();
         Review review = new Review();
 
@@ -174,5 +172,4 @@ public class UserReviewController {
         reviewService.deleteReview(reviewId);
         return existingReview;
     }
-
 }

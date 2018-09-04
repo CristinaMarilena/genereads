@@ -1,5 +1,6 @@
 package com.example.controller.model.mappings;
 
+import com.example.model.Book;
 import com.example.model.CurrentlyReading;
 import com.example.service.AccountService;
 import com.example.service.BookService;
@@ -8,6 +9,7 @@ import com.example.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -18,18 +20,18 @@ public class CurrentlyReadingController {
     private CurrentlyReadingService currentlyReadingService;
 
     @Autowired
-    private SecurityService securityService;
-
-    @Autowired
     private AccountService accountService;
 
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private SecurityService securityService;
+
 
     @RequestMapping(value = "reading/byurl/{bookurl}", method = RequestMethod.POST)
     public CurrentlyReading addToCurrentlyReading(@PathVariable String bookurl) {
-        int userId = accountService.findByEmail("cris@email").getUserId();
+        int userId = accountService.findByEmail(securityService.findLoggedInUsername()).getUserId();
         int bookId = bookService.getBookByUrl(bookurl).getBookId();
         CurrentlyReading currentlyReadingToBeFound = currentlyReadingService.getCurrentlyReadingByUserAndBook(userId, bookId);
         if( currentlyReadingToBeFound == null) {
@@ -49,7 +51,7 @@ public class CurrentlyReadingController {
 
     @RequestMapping(value = "reading/byurl/{bookurl}", method = RequestMethod.GET)
     public CurrentlyReading getCurrentlyReading(@PathVariable String bookurl) {
-        int userId = accountService.findByEmail("cris@email").getUserId();
+        int userId = accountService.findByEmail(securityService.findLoggedInUsername()).getUserId();
         int bookId = bookService.getBookByUrl(bookurl).getBookId();
         CurrentlyReading readingToBeFound = currentlyReadingService.getCurrentlyReadingByUserAndBook(userId, bookId);
         return (readingToBeFound != null) ? readingToBeFound : null;
@@ -99,8 +101,13 @@ public class CurrentlyReadingController {
     }
 
     @RequestMapping(value = "currentlyreading/own", method = RequestMethod.GET)
-    public List<CurrentlyReading> getCurrentlyReadingByCurrentUser(){
-        List<CurrentlyReading> currentlyReadingList = currentlyReadingService.getCurrentlyReadingByUser(accountService.findByEmail(securityService.findLoggedInUsername()).getUserId());
-        return currentlyReadingList;
+    public List<Book> getCurrentlyReadingByCurrentUser(){
+        List<CurrentlyReading> currentlyReadingList = currentlyReadingService.getCurrentlyReadingByUser(
+                accountService.findByEmail(securityService.findLoggedInUsername()).getUserId());
+        List<Book> bookList = new LinkedList<>();
+        for(CurrentlyReading currentlyReading:currentlyReadingList){
+            bookList.add(bookService.getBook(currentlyReading.getBookId()));
+        }
+        return bookList;
     }
 }

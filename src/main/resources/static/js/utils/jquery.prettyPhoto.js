@@ -23,7 +23,7 @@
 			counter_separator_label: '/', /* The separator for the gallery counter 1 "of" 2 */
 			theme: 'pp_default', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
 			horizontal_padding: 20, /* The padding on each side of the picture */
-			hideflash: false, /* Hides all the flash object on a page, set to TRUE if flash appears over prettyPhoto */
+			hideflash: false, /* Hides all the flash object on a customized, set to TRUE if flash appears over prettyPhoto */
 			wmode: 'opaque', /* Set the flash wmode attribute */
 			autoplay: true, /* Automatically start videos: True/False */
 			modal: false, /* If set to true, only the close button will close the window */
@@ -378,7 +378,7 @@
 
 	
 		/**
-		* Change page in the prettyPhoto modal box
+		* Change customized in the prettyPhoto modal box
 		* @param direction {String} Direction of the paging, previous or next.
 		*/
 		$.prettyPhoto.changePage = function(direction){
@@ -406,7 +406,7 @@
 
 
 		/**
-		* Change gallery page in the prettyPhoto modal box
+		* Change gallery customized in the prettyPhoto modal box
 		* @param direction {String} Direction of the paging, previous or next.
 		*/
 		$.prettyPhoto.changeGalleryPage = function(direction){
@@ -879,7 +879,7 @@
 			hashRel = hashRel.substring(0,hashRel.indexOf('/'));
 
 			// Little timeout to make sure all the prettyPhoto initialize scripts has been run.
-			// Useful in the event the page contain several init scripts.
+			// Useful in the event the customized contain several init scripts.
 			setTimeout(function(){ $("a["+pp_settings.hook+"^='"+hashRel+"']:eq("+hashIndex+")").trigger('click'); },50);
 		}
 		

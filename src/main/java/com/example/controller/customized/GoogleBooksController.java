@@ -1,4 +1,4 @@
-package com.example.controller.model.mappings;
+package com.example.controller.customized;
 
 import com.example.google.books.api.ClientCredentials;
 import com.example.google.books.api.CreateBookSearchQuery;
@@ -16,7 +16,6 @@ import com.google.api.services.books.BooksRequestInitializer;
 import com.google.api.services.books.model.Volume;
 import com.google.api.services.books.model.Volumes;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,20 +45,16 @@ public class GoogleBooksController {
      */
     private static final String APPLICATION_NAME = "bookrec";
 
-    private static final NumberFormat CURRENCY_FORMATTER = NumberFormat.getCurrencyInstance();
-    private static final NumberFormat PERCENT_FORMATTER = NumberFormat.getPercentInstance();
-
     public List<Book> getBooks(String queryTitle, String queryAuthor) {
         ClientCredentials.errorIfNotSpecified();
-
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-
         java.util.List<Book> bookList = new LinkedList<>();
 
-
-        // Set up Books client.
         try {
-            final Books books = new Books.Builder(GoogleNetHttpTransport.newTrustedTransport(), jsonFactory, null)
+            final Books books = new Books.Builder(
+                    GoogleNetHttpTransport.newTrustedTransport(),
+                    jsonFactory,
+                    null)
                     .setApplicationName(APPLICATION_NAME)
                     .setGoogleClientRequestInitializer(new BooksRequestInitializer(ClientCredentials.API_KEY))
                     .build();
@@ -67,7 +62,6 @@ public class GoogleBooksController {
             String query = "";
 
             if (queryAuthor != null && queryTitle != null) {
-
                 java.util.List<Book> bookListAuthor = new LinkedList<>();
                 java.util.List<Book> bookListTitle = new LinkedList<>();
 
@@ -77,18 +71,15 @@ public class GoogleBooksController {
                 bookList.addAll(bookListAuthor.subList(0, bookListAuthor.size() / 2));
                 bookList.addAll(bookListTitle.subList(0, bookListTitle.size() / 2));
 
-
             } else {
                 query = (queryAuthor != null) ? queryAuthor : queryTitle;
                 bookList = search(query, books);
             }
-
         } catch (GeneralSecurityException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return bookList;
     }
 
@@ -110,10 +101,10 @@ public class GoogleBooksController {
         }
 
         // Output results.
-        boolean enoughelements = false;
+        boolean enoughElements = false;
 
         for (Volume volume : volumes.getItems()) {
-            if (!enoughelements) {
+            if (!enoughElements) {
                 Book book = new Book();
                 Volume.VolumeInfo volumeInfo = volume.getVolumeInfo();
                 String urlId = volume.getSelfLink().substring(volume.getSelfLink().indexOf("/volumes") + 9);
@@ -208,7 +199,7 @@ public class GoogleBooksController {
                     System.out.println("Book added");
                     bookList.add(book);
 
-                    if (bookList.size() > 15) enoughelements = true;
+                    if (bookList.size() > 15) enoughElements = true;
                 } else {
                     book.setApiUrl(urlId);
                     System.out.println("Book already exists");
@@ -281,7 +272,7 @@ public class GoogleBooksController {
                     System.out.println(new Date());
                     bookList.add(book);
 
-                    if (bookList.size() > 15) enoughelements = true;
+                    if (bookList.size() > 15) enoughElements = true;
 
                 }
             }
@@ -289,13 +280,6 @@ public class GoogleBooksController {
 
         return bookList;
     }
-
-/*    @RequestMapping(value = "byisbn/{isbn}", method = RequestMethod.GET)
-    public List<Book> getBooksByISBN(@PathVariable String isbn) {
-        List<Book> bookList = new LinkedList<Book>();
-        String query = CreateBookSearchQuery.getSearchQuery("--isbn", isbn);
-        return this.getBooks(query);
-    }*/
 
     @RequestMapping(value = "bytitle/{title}", method = RequestMethod.GET)
     public List<Book> getBooksByTitle(@PathVariable String title) {

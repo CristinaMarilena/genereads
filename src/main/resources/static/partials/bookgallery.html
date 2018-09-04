@@ -1,17 +1,13 @@
 <!-- Gallery Items
        ================================================== -->
 <div class="span12 gallery">
-
     <ul id="filterOptions" class="gallery-cats clearfix">
         <li class="active"><a href="#" class="all">All</a></li>
         <li><a href="#" class="illustration">Illustration</a></li>
         <li><a href="#" class="design">Design</a></li>
-        <li><a href="#" class="video">Video</a></li>
-        <li><a href="#" class="web">Web</a></li>
+        <li><a href="#" class="video">Fiction</a></li>
+        <li><a href="#" class="web">Drama</a></li>
     </ul>
-
-    <span ng-show="!DisplayFactory.searched">Recently viewed</span>
-
     <div class="row clearfix">
         <ul ng-repeat="book in SearchInputService.books" class="gallery-post-grid holder">
             <!--NG REPEAT -->
@@ -29,16 +25,4 @@
 
         </ul>
     </div>
-    <!-- Pagination -->
-    <div class="pagination">
-        <ul>
-            <li class="active"><a href="#">Prev</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">Next</a></li>
-        </ul>
-    </div>
-
 </div><!-- End gallery list-->

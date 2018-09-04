@@ -3,5 +3,6 @@
     <input type="search" name="q" ng-model="SearchInputService.searchInput"
                                          placeholder="What are you looking for ?"
                                          autocomplete="off" required="required"/>
-    <button type="submit" id="search-bar" ng-click="SearchInputService.getBooks()">&#128270;</button>
+    <button type="submit" id="search-bar" ng-click="SearchInputService.getServiceType('search');
+    SearchInputService.getBooks()">&#128270;</button>
 </form>

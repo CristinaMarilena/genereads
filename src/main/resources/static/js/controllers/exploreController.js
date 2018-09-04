@@ -1,9 +1,9 @@
 app.controller("ExploreController", [
     '$http',
     '$scope',
-    'ExploreByTitleService',
+    'ExploreService',
     'SearchInputService',
-    function ($http, $scope, ExploreByTitleService, SearchInputService, DisplayFactory) {
+    function ($http, $scope, ExploreService, SearchInputService, DisplayFactory) {
 
         $scope.SearchInputService = SearchInputService;
         $scope.DisplayFactory = DisplayFactory;

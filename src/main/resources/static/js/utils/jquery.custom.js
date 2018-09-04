@@ -83,7 +83,7 @@ function imgfeedHover() {
 
 ////////// CSS Fix //////////
  $(".post-list li:first-child").css("padding-top", "0px");
- $(".page-sidebar h5:first, .page-left-sidebar h5:first, .page-right-sidebar h5:first").css("margin-top", "0px");
+ $(".customized-sidebar h5:first, .customized-left-sidebar h5:first, .customized-right-sidebar h5:first").css("margin-top", "0px");
  $('h5.title-bg').has('button').css("padding-bottom", "12px");
 
 ////////// prettyPhoto ////////// 

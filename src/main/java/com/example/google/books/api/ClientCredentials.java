@@ -13,8 +13,6 @@
  */
 
 package com.example.google.books.api;
-
-
 /**
  * API key found in the <a href="https://code.google.com/apis/console?api=books">Google apis
  * console</a>.
@@ -25,8 +23,7 @@ package com.example.google.books.api;
  * name and click on "Create..." under "Other projects". Finally, click on "API Access". Look for
  * the section at the bottom called "Simple API Access".
  * </p>
- * 
- * @author Ravi Mistry
+ *
  */
 public class ClientCredentials {
 
